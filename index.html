@@ -1,168 +1,340 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع كاي | كلمة المرور</title>
+    <title>&#1605;&#1585;&#1581;&#1576;&#1575;&#1611; &#1576;&#1603;</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-                        url('https://images.unsplash.com/photo-1519681393784-d120267933ba') no-repeat center center fixed;
-            background-size: cover;
+            background: #000510;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-        }
-        
-        .container {
             text-align: center;
-            max-width: 800px;
-            width: 90%;
-            padding: 20px;
         }
         
-        .logo {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #00ff9d;
-            text-shadow: 0 0 20px #00ff9d;
-            animation: glow 2s infinite alternate;
+        /* &#1582;&#1604;&#1601;&#1610;&#1577; &#1587;&#1608;&#1583;&#1575;&#1569; &#1606;&#1602;&#1610;&#1577; */
+        .space {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: -2;
         }
         
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #00ff9d; }
-            to { text-shadow: 0 0 30px #00ff9d, 0 0 40px #00ff9d; }
+        /* &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1575;&#1604;&#1589;&#1594;&#1610;&#1585;&#1577; &#1601;&#1602;&#1591; */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
         
-        .title {
-            font-size: 28px;
-            margin-bottom: 10px;
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578; - &#1575;&#1604;&#1603;&#1579;&#1610;&#1585; &#1605;&#1606;&#1607;&#1575; */
+        .meteor {
+            position: absolute;
+            width: 1.5px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, #66aaff);
+            transform: rotate(-45deg);
+            animation: meteorFall linear infinite;
+            filter: drop-shadow(0 0 8px #66aaff);
+            opacity: 0.7;
+        }
+        
+        @keyframes meteorFall {
+            0% {
+                top: -100px;
+                left: -100px;
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        /* &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1576;&#1610;&#1585;&#1577; &#1586;&#1585;&#1602;&#1575;&#1569; */
+        .meteor-large {
+            position: absolute;
+            width: 2.5px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #00aaff);
+            transform: rotate(-45deg);
+            animation: meteorFallLarge linear infinite;
+            filter: drop-shadow(0 0 15px #00aaff);
+            opacity: 0.8;
+        }
+        
+        @keyframes meteorFallLarge {
+            0% {
+                top: -150px;
+                left: -150px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        /* &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1576;&#1610;&#1590;&#1575;&#1569; */
+        .meteor-white {
+            position: absolute;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #ffffff);
+            transform: rotate(-45deg);
+            animation: meteorFallWhite linear infinite;
+            filter: drop-shadow(0 0 6px #ffffff);
+            opacity: 0.6;
+        }
+        
+        @keyframes meteorFallWhite {
+            0% {
+                top: -80px;
+                left: -80px;
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        /* &#1575;&#1604;&#1606;&#1589; &#1601;&#1602;&#1591; &#1601;&#1610; &#1575;&#1604;&#1605;&#1606;&#1578;&#1589;&#1601; */
+        .text-container {
+            z-index: 10;
+            animation: fadeIn 2s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .main-text {
+            font-size: 80px;
+            margin-bottom: 5px;
             color: #ffffff;
+            text-shadow: 0 0 40px #66aaff, 0 0 80px #66aaff;
+            letter-spacing: 1px;
         }
         
-        .password-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
-        }
-        
-        .password-label {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #aaaaaa;
-        }
-        
-        .password {
-            font-size: 72px;
-            font-weight: bold;
-            color: #00ff9d;
-            margin: 20px 0;
-            text-shadow: 0 0 20px #00ff9d;
-            letter-spacing: 5px;
-            font-family: 'Courier New', monospace;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 2px solid rgba(0, 255, 157, 0.3);
-        }
-        
-        .buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            background: linear-gradient(45deg, #0066ff, #00ccff);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.4);
-        }
-        
-        .message {
-            margin-top: 20px;
-            color: #00ff9d;
-            font-size: 16px;
-            height: 25px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .message.show {
-            opacity: 1;
-        }
-        
-        @media (max-width: 600px) {
-            .logo { font-size: 36px; }
-            .password { font-size: 48px; }
-            .btn { width: 100%; max-width: 300px; }
+        .sub-text {
+            font-size: 22px;
+            color: #aaccff;
+            margin-top: 5px;
+            opacity: 0.9;
+            text-shadow: 0 0 20px #aaccff;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">⚡ KAI</div>
-        <h1 class="title">مرحبًا بك في موقع كلمة المرور</h1>
-        
-        <div class="password-container">
-            <div class="password-label">كلمة المرور:</div>
-            <div class="password">kai</div>
-            
-            <div class="buttons">
-                <button class="btn" onclick="copyPassword()">📋 نسخ كلمة المرور</button>
-            </div>
-            
-            <div class="message" id="message"></div>
-        </div>
-        
-        <!-- تم حذف الفوتر هنا -->
+    <!-- &#1575;&#1604;&#1601;&#1590;&#1575;&#1569; &#1575;&#1604;&#1571;&#1587;&#1608;&#1583; -->
+    <div class="space"></div>
+    
+    <!-- &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578; - &#1587;&#1610;&#1578;&#1605; &#1573;&#1590;&#1575;&#1601;&#1578;&#1607;&#1575; &#1576;&#1575;&#1604;&#1580;&#1575;&#1601;&#1575;&#1587;&#1603;&#1585;&#1610;&#1576;&#1578; -->
+    <div id="meteors"></div>
+    
+    <!-- &#1575;&#1604;&#1606;&#1589; &#1601;&#1610; &#1575;&#1604;&#1605;&#1606;&#1578;&#1589;&#1601; -->
+    <div class="text-container">
+        <div class="main-text">&#1605;&#1585;&#1581;&#1576;&#1575;&#1611; &#1576;&#1603;</div>
+        <div class="sub-text">&#1605;&#1608;&#1602;&#1593;&#1606;&#1575; &#1575;&#1604;&#1571;&#1608;&#1604;</div>
     </div>
 
     <script>
-        function copyPassword() {
-            navigator.clipboard.writeText('kai').then(() => {
-                showMessage('✅ تم نسخ كلمة المرور بنجاح!');
-            });
-        }
-        
-        function showMessage(text) {
-            const msgEl = document.getElementById('message');
-            msgEl.textContent = text;
-            msgEl.classList.add('show');
+        // 1. &#1573;&#1606;&#1588;&#1575;&#1569; &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1575;&#1604;&#1589;&#1594;&#1610;&#1585;&#1577;
+        function createStars() {
+            const stars = document.getElementById('stars');
             
-            setTimeout(() => {
-                msgEl.classList.remove('show');
-            }, 2000);
+            for(let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // &#1581;&#1580;&#1605; &#1589;&#1594;&#1610;&#1585;
+                const size = Math.random() * 2 + 0.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // &#1605;&#1608;&#1602;&#1593; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // &#1571;&#1604;&#1608;&#1575;&#1606; &#1605;&#1578;&#1606;&#1608;&#1593;&#1577;
+                const colors = ['#ffffff', '#eef5ff', '#d4e4ff', '#aaccff'];
+                star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // &#1608;&#1605;&#1610;&#1590; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 4 + 2;
+                star.style.animationDelay = delay + 's';
+                star.style.animationDuration = duration + 's';
+                
+                stars.appendChild(star);
+            }
         }
         
-        window.onload = function() {
+        // 2. &#1573;&#1606;&#1588;&#1575;&#1569; &#1605;&#1584;&#1606;&#1576; &#1608;&#1575;&#1581;&#1583;
+        function createMeteor(type = 'normal') {
+            const meteors = document.getElementById('meteors');
+            const meteor = document.createElement('div');
+            
+            // &#1575;&#1582;&#1578;&#1610;&#1575;&#1585; &#1606;&#1608;&#1593; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;
+            if (type === 'large') {
+                meteor.className = 'meteor-large';
+            } else if (type === 'white') {
+                meteor.className = 'meteor-white';
+            } else {
+                meteor.className = 'meteor';
+            }
+            
+            // &#1605;&#1608;&#1602;&#1593; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
+            meteor.style.left = Math.random() * 100 + '%';
+            meteor.style.top = Math.random() * 50 + '%';
+            
+            // &#1587;&#1585;&#1593;&#1577; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;&#1577;
+            let duration;
+            if (type === 'large') {
+                duration = Math.random() * 3 + 1.5; // &#1587;&#1585;&#1610;&#1593;
+            } else if (type === 'white') {
+                duration = Math.random() * 5 + 3; // &#1605;&#1578;&#1608;&#1587;&#1591;
+            } else {
+                duration = Math.random() * 4 + 2; // &#1593;&#1575;&#1583;&#1610;
+            }
+            
+            meteor.style.animationDuration = duration + 's';
+            meteor.style.animationDelay = Math.random() * 2 + 's';
+            
+            // &#1591;&#1608;&#1604; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
+            if (type === 'large') {
+                meteor.style.height = (Math.random() * 60 + 60) + 'px';
+            } else if (type === 'white') {
+                meteor.style.height = (Math.random() * 30 + 30) + 'px';
+            } else {
+                meteor.style.height = (Math.random() * 40 + 30) + 'px';
+            }
+            
+            meteors.appendChild(meteor);
+            
+            // &#1573;&#1586;&#1575;&#1604;&#1577; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576; &#1576;&#1593;&#1583; &#1575;&#1606;&#1578;&#1607;&#1575;&#1569; &#1575;&#1604;&#1581;&#1585;&#1603;&#1577;
             setTimeout(() => {
-                showMessage('👋 اضغط على الزر لنسخ كلمة المرور');
-            }, 1000);
+                if (meteor.parentNode) {
+                    meteor.remove();
+                }
+            }, duration * 1000 + 1000);
+        }
+        
+        // 3. &#1573;&#1606;&#1588;&#1575;&#1569; &#1575;&#1604;&#1603;&#1579;&#1610;&#1585; &#1605;&#1606; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578;
+        function createManyMeteors() {
+            // &#1573;&#1606;&#1588;&#1575;&#1569; 15 &#1605;&#1584;&#1606;&#1576;&#1575;&#1611; &#1576;&#1588;&#1603;&#1604; &#1601;&#1608;&#1585;&#1610;
+            for(let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    // &#1578;&#1608;&#1586;&#1610;&#1593; &#1575;&#1604;&#1571;&#1606;&#1608;&#1575;&#1593;: 50% &#1593;&#1575;&#1583;&#1610;&#1548; 30% &#1603;&#1576;&#1610;&#1585;&#1548; 20% &#1571;&#1576;&#1610;&#1590;
+                    const rand = Math.random();
+                    if (rand < 0.5) {
+                        createMeteor('normal');
+                    } else if (rand < 0.8) {
+                        createMeteor('large');
+                    } else {
+                        createMeteor('white');
+                    }
+                }, i * 300); // &#1578;&#1571;&#1582;&#1610;&#1585; &#1576;&#1610;&#1606; &#1603;&#1604; &#1605;&#1584;&#1606;&#1576;
+            }
+        }
+        
+        // 4. &#1575;&#1587;&#1578;&#1605;&#1585;&#1575;&#1585; &#1573;&#1590;&#1575;&#1601;&#1577; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578;
+        function startMeteorShower() {
+            // &#1573;&#1606;&#1588;&#1575;&#1569; &#1583;&#1601;&#1593;&#1577; &#1571;&#1608;&#1604;&#1610;&#1577;
+            createManyMeteors();
+            
+            // &#1575;&#1587;&#1578;&#1605;&#1585;&#1575;&#1585; &#1573;&#1590;&#1575;&#1601;&#1577; &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1604; 3-5 &#1579;&#1608;&#1575;&#1606;&#1610;
+            setInterval(() => {
+                // &#1573;&#1590;&#1575;&#1601;&#1577; 3-6 &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1604; &#1605;&#1585;&#1577;
+                const count = Math.floor(Math.random() * 4) + 3;
+                for(let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const types = ['normal', 'normal', 'large', 'white'];
+                        const type = types[Math.floor(Math.random() * types.length)];
+                        createMeteor(type);
+                    }, i * 200);
+                }
+            }, 3000);
+        }
+        
+        // 5. &#1581;&#1585;&#1603;&#1577; &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1605;&#1593; &#1575;&#1604;&#1605;&#1575;&#1608;&#1587;
+        function initMouseEffect() {
+            let mouseX = 0, mouseY = 0;
+            
+            document.addEventListener('mousemove', function(e) {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 8;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 8;
+            });
+            
+            function updateStars() {
+                document.querySelector('.stars').style.transform = 
+                    `translate(${mouseX}px, ${mouseY}px)`;
+                requestAnimationFrame(updateStars);
+            }
+            updateStars();
+        }
+        
+        // 6. &#1576;&#1583;&#1569; &#1603;&#1604; &#1588;&#1610;&#1569;
+        window.onload = function() {
+            createStars();
+            startMeteorShower();
+            initMouseEffect();
+            
+            // &#1573;&#1590;&#1575;&#1601;&#1577; &#1606;&#1580;&#1608;&#1605; &#1580;&#1583;&#1610;&#1583;&#1577; &#1576;&#1610;&#1606; &#1575;&#1604;&#1581;&#1610;&#1606; &#1608;&#1575;&#1604;&#1570;&#1582;&#1585;
+            setInterval(() => {
+                if(Math.random() > 0.5) {
+                    const stars = document.getElementById('stars');
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.width = (Math.random() * 1.5 + 0.5) + 'px';
+                    star.style.height = star.style.width;
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = '-10px';
+                    star.style.background = Math.random() > 0.3 ? '#ffffff' : '#aaccff';
+                    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    stars.appendChild(star);
+                }
+            }, 2000);
         };
     </script>
 </body>
