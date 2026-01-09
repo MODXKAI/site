@@ -31,14 +31,12 @@
             height: 100%;
             z-index: -2;
             background: linear-gradient(180deg, 
-                #0a0a2a 0%, 
-                #1a1a40 30%, 
-                #2d2d5a 60%, 
-                #3a3a6e 100%);
+                #000428 0%, 
+                #004e92 100%);
             overflow: hidden;
         }
         
-        /* النجوم المتلألئة */
+        /* النجوم */
         .stars-container {
             position: absolute;
             top: 0;
@@ -54,7 +52,7 @@
             animation: twinkle 3s infinite;
         }
         
-        /* صنع العديد من النجوم */
+        /* إنشاء النجوم بشكل عشوائي */
         .star:nth-child(1) { top: 10%; left: 15%; width: 2px; height: 2px; animation-delay: 0s; }
         .star:nth-child(2) { top: 20%; left: 70%; width: 3px; height: 3px; animation-delay: 0.5s; }
         .star:nth-child(3) { top: 30%; left: 40%; width: 1px; height: 1px; animation-delay: 1s; }
@@ -65,18 +63,8 @@
         .star:nth-child(8) { top: 80%; left: 50%; width: 3px; height: 3px; animation-delay: 0.8s; }
         .star:nth-child(9) { top: 90%; left: 10%; width: 2px; height: 2px; animation-delay: 1.3s; }
         .star:nth-child(10) { top: 15%; left: 90%; width: 3px; height: 3px; animation-delay: 1.8s; }
-        .star:nth-child(11) { top: 25%; left: 25%; width: 1px; height: 1px; animation-delay: 2.3s; }
-        .star:nth-child(12) { top: 35%; left: 75%; width: 2px; height: 2px; animation-delay: 0.7s; }
-        .star:nth-child(13) { top: 45%; left: 45%; width: 3px; height: 3px; animation-delay: 1.2s; }
-        .star:nth-child(14) { top: 55%; left: 85%; width: 2px; height: 2px; animation-delay: 1.7s; }
-        .star:nth-child(15) { top: 65%; left: 35%; width: 1px; height: 1px; animation-delay: 2.2s; }
-        .star:nth-child(16) { top: 75%; left: 65%; width: 3px; height: 3px; animation-delay: 0.4s; }
-        .star:nth-child(17) { top: 85%; left: 95%; width: 2px; height: 2px; animation-delay: 0.9s; }
-        .star:nth-child(18) { top: 95%; left: 55%; width: 1px; height: 1px; animation-delay: 1.4s; }
-        .star:nth-child(19) { top: 5%; left: 5%; width: 3px; height: 3px; animation-delay: 1.9s; }
-        .star:nth-child(20) { top: 5%; left: 95%; width: 2px; height: 2px; animation-delay: 2.4s; }
         
-        /* المذنبات */
+        /* المذنبات الحقيقية - تأتي من الأعلى بزوايا مختلفة */
         .comets-container {
             position: absolute;
             top: 0;
@@ -88,104 +76,92 @@
         
         .comet {
             position: absolute;
-            background: linear-gradient(90deg, transparent, white, transparent);
-            border-radius: 50%;
             opacity: 0;
         }
         
-        /* مذنبات من جميع الاتجاهات */
-        .comet-1 {
-            width: 120px;
+        /* رأس المذنب */
+        .comet-head {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* ذيل المذنب */
+        .comet-tail {
+            position: absolute;
             height: 3px;
-            top: 15%;
-            right: -150px;
-            animation: comet-fly-rtl 8s infinite 0s linear;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+            border-radius: 2px;
+            transform-origin: left center;
+        }
+        
+        /* مذنبات مختلفة بزوايا مختلفة */
+        .comet-1 {
+            top: -50px;
+            left: 10%;
+            animation: comet-fly 8s infinite 0s linear;
+        }
+        
+        .comet-1 .comet-tail {
+            width: 100px;
+            transform: rotate(-30deg);
         }
         
         .comet-2 {
-            width: 150px;
-            height: 4px;
-            top: 40%;
-            left: -180px;
-            animation: comet-fly-ltr 10s infinite 2s linear;
+            top: -80px;
+            left: 40%;
+            animation: comet-fly 10s infinite 3s linear;
+        }
+        
+        .comet-2 .comet-tail {
+            width: 120px;
+            transform: rotate(-45deg);
         }
         
         .comet-3 {
-            width: 100px;
-            height: 2px;
-            top: 70%;
-            right: -130px;
-            animation: comet-fly-rtl 7s infinite 4s linear;
+            top: -60px;
+            left: 70%;
+            animation: comet-fly 7s infinite 6s linear;
+        }
+        
+        .comet-3 .comet-tail {
+            width: 80px;
+            transform: rotate(-20deg);
         }
         
         .comet-4 {
-            width: 130px;
-            height: 3px;
-            bottom: 25%;
-            left: -160px;
-            animation: comet-fly-ltr 9s infinite 6s linear;
+            top: -100px;
+            left: 20%;
+            animation: comet-fly 9s infinite 9s linear;
+        }
+        
+        .comet-4 .comet-tail {
+            width: 140px;
+            transform: rotate(-60deg);
         }
         
         .comet-5 {
+            top: -70px;
+            left: 85%;
+            animation: comet-fly 11s infinite 12s linear;
+        }
+        
+        .comet-5 .comet-tail {
             width: 90px;
-            height: 2px;
-            top: -50px;
-            left: 30%;
-            transform: rotate(45deg);
-            animation: comet-fly-top 6s infinite 1s linear;
+            transform: rotate(-15deg);
         }
         
-        .comet-6 {
-            width: 110px;
-            height: 3px;
-            bottom: -40px;
-            right: 40%;
-            transform: rotate(135deg);
-            animation: comet-fly-bottom 7s infinite 3s linear;
-        }
-        
-        .comet-7 {
-            width: 140px;
-            height: 3px;
-            top: 85%;
-            left: -170px;
-            animation: comet-fly-ltr 8s infinite 5s linear;
-        }
-        
-        .comet-8 {
-            width: 160px;
-            height: 4px;
-            top: 55%;
-            right: -200px;
-            animation: comet-fly-rtl 11s infinite 7s linear;
-        }
-        
-        .comet-9 {
-            width: 80px;
-            height: 2px;
-            top: -40px;
-            right: 60%;
-            transform: rotate(135deg);
-            animation: comet-fly-top 5s infinite 2.5s linear;
-        }
-        
-        .comet-10 {
-            width: 120px;
-            height: 3px;
-            bottom: -50px;
-            left: 70%;
-            transform: rotate(45deg);
-            animation: comet-fly-bottom 6s infinite 4.5s linear;
-        }
-        
-        /* السحب الخفيفة */
+        /* سحب خفيفة */
         .clouds {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.2;
+            opacity: 0.1;
         }
         
         .cloud {
@@ -218,8 +194,7 @@
             height: 100%;
             background: 
                 radial-gradient(circle at 10% 20%, rgba(100, 150, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(150, 100, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(100, 200, 255, 0.05) 0%, transparent 60%);
+                radial-gradient(circle at 90% 80%, rgba(150, 100, 255, 0.1) 0%, transparent 40%);
             z-index: -1;
         }
         
@@ -377,11 +352,10 @@
             50% { opacity: 1; }
         }
         
-        @keyframes comet-fly-rtl {
+        @keyframes comet-fly {
             0% {
                 opacity: 0;
-                right: -150px;
-                transform: translateX(0);
+                transform: translateY(0) translateX(0);
             }
             10% {
                 opacity: 1;
@@ -391,61 +365,7 @@
             }
             100% {
                 opacity: 0;
-                right: 100%;
-                transform: translateX(-100px);
-            }
-        }
-        
-        @keyframes comet-fly-ltr {
-            0% {
-                opacity: 0;
-                left: -150px;
-                transform: translateX(0);
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                left: 100%;
-                transform: translateX(100px);
-            }
-        }
-        
-        @keyframes comet-fly-top {
-            0% {
-                opacity: 0;
-                top: -50px;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                top: 100%;
-            }
-        }
-        
-        @keyframes comet-fly-bottom {
-            0% {
-                opacity: 0;
-                bottom: -50px;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                bottom: 100%;
+                transform: translateY(100vh) translateX(100px);
             }
         }
         
@@ -461,6 +381,20 @@
             
             .image-container {
                 height: 200px;
+            }
+            
+            /* جعل المذنبات أصغر على الجوال */
+            .comet-head {
+                width: 6px;
+                height: 6px;
+            }
+            
+            .comet-1 .comet-tail,
+            .comet-2 .comet-tail,
+            .comet-3 .comet-tail,
+            .comet-4 .comet-tail,
+            .comet-5 .comet-tail {
+                width: 60px;
             }
         }
         
@@ -494,16 +428,6 @@
             <div class="star"></div>
             <div class="star"></div>
             <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
         </div>
         
         <div class="clouds">
@@ -511,18 +435,28 @@
             <div class="cloud cloud-2"></div>
         </div>
         
-        <!-- المذنبات -->
+        <!-- المذنبات الحقيقية -->
         <div class="comets-container">
-            <div class="comet comet-1"></div>
-            <div class="comet comet-2"></div>
-            <div class="comet comet-3"></div>
-            <div class="comet comet-4"></div>
-            <div class="comet comet-5"></div>
-            <div class="comet comet-6"></div>
-            <div class="comet comet-7"></div>
-            <div class="comet comet-8"></div>
-            <div class="comet comet-9"></div>
-            <div class="comet comet-10"></div>
+            <div class="comet comet-1">
+                <div class="comet-head"></div>
+                <div class="comet-tail"></div>
+            </div>
+            <div class="comet comet-2">
+                <div class="comet-head"></div>
+                <div class="comet-tail"></div>
+            </div>
+            <div class="comet comet-3">
+                <div class="comet-head"></div>
+                <div class="comet-tail"></div>
+            </div>
+            <div class="comet comet-4">
+                <div class="comet-head"></div>
+                <div class="comet-tail"></div>
+            </div>
+            <div class="comet comet-5">
+                <div class="comet-head"></div>
+                <div class="comet-tail"></div>
+            </div>
         </div>
     </div>
     
