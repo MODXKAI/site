@@ -27,6 +27,21 @@ header{
     color:#00ff9d;
 }
 
+.lang-switch{
+    text-align:center;
+    margin:15px 0;
+}
+
+.lang-switch button{
+    background:none;
+    border:1px solid #00ff9d;
+    color:#00ff9d;
+    padding:6px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    margin:0 5px;
+}
+
 .container{
     width:95%;
     max-width:1000px;
@@ -94,9 +109,16 @@ footer{
 ⚡ KAI MODS FREE FIRE
 </header>
 
+<div class="lang-switch">
+    <button onclick="setLang('ar')">العربية</button>
+    <button onclick="setLang('en')">English</button>
+</div>
+
 <div class="container">
 
-<!-- مود 1 -->
+<!-- AR -->
+<div id="ar">
+
 <div class="mod">
     <img src="https://i.imgur.com/6QZ6QZK.jpg">
     <div class="mod-content">
@@ -106,21 +128,28 @@ footer{
         مود عرض سكنات نادرة مع مؤثرات كاملة.
         يعمل على أندرويد و iOS.
         </p>
-        <a href="#" class="download">تحميل</a>
+        <a href="#" class="download" onclick="demo()">تحميل</a>
     </div>
 </div>
 
-<!-- مود 2 -->
+</div>
+
+<!-- EN -->
+<div id="en" style="display:none" dir="ltr">
+
 <div class="mod">
-    <img src="https://i.imgur.com/3QX9QXq.jpg">
+    <img src="https://i.imgur.com/6QZ6QZK.jpg">
     <div class="mod-content">
-        <h2>Kim Long - NA7 Full Effect</h2>
-        <div class="version">الإصدار: v27</div>
+        <h2>Free Fire Skin Mod OB50</h2>
+        <div class="version">Version: v28</div>
         <p>
-        سكن كيم لونغ مع مؤثرات كاملة داخل اللوبي.
+        Visual skin mod with full effects.
+        Works on Android & iOS.
         </p>
-        <a href="#" class="download">تحميل</a>
+        <a href="#" class="download" onclick="demo()">Download</a>
     </div>
+</div>
+
 </div>
 
 </div>
@@ -128,6 +157,19 @@ footer{
 <footer>
 © 2026 KAI Mods
 </footer>
+
+<script>
+function setLang(lang){
+    document.getElementById("ar").style.display = lang === "ar" ? "block" : "none";
+    document.getElementById("en").style.display = lang === "en" ? "block" : "none";
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+}
+
+function demo(){
+    alert("🔧 هذا رابط تجريبي فقط");
+}
+</script>
 
 </body>
 </html>
