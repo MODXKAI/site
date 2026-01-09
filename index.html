@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>معرض الصور البسيط</title>
+    <title>معرض الصور</title>
     <style>
         * {
             margin: 0;
@@ -13,48 +13,89 @@
         }
         
         body {
-            background-color: #f8f9fa;
             color: #333;
             padding: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* الخلفية المتحركة */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* تأثير ضبابي فوق الخلفية */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             padding: 20px;
         }
         
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
         
         .image-card {
-            background-color: white;
-            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .image-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
         
         .image-container {
             width: 100%;
-            height: 200px;
+            height: 220px;
             overflow: hidden;
         }
         
@@ -62,42 +103,56 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-card:hover .image-container img {
+            transform: scale(1.1);
         }
         
         .content {
-            padding: 20px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
         
         .image-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             color: #2c3e50;
             text-align: center;
+            font-weight: 600;
         }
         
         .link-btn {
             display: inline-block;
-            background-color: #3498db;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px 25px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
             text-align: center;
             margin-top: auto;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
         }
         
         .link-btn:hover {
-            background-color: #2980b9;
+            background: linear-gradient(135deg, #2980b9, #1a252f);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
         
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
             }
         }
         
@@ -105,13 +160,20 @@
             .container {
                 grid-template-columns: 1fr;
             }
+            
+            body {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- الخلفية المتحركة -->
+    <div class="animated-bg"></div>
+    <div class="overlay"></div>
+    
     <div class="header">
         <h1>معرض الصور</h1>
-        <p>4 صور مع عناوين فقط وأزرار لفتح الروابط</p>
     </div>
     
     <div class="container">
