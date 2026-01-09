@@ -20,7 +20,6 @@
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
-            transition: all 0.5s ease;
         }
         
         /* زر تبديل اللغة */
@@ -58,46 +57,8 @@
             transform: translateY(0);
         }
         
-        .lang-btn.loading {
-            opacity: 0.7;
-            pointer-events: none;
-        }
-        
-        .lang-btn.loading .lang-icon {
-            animation: spin 1s linear infinite;
-        }
-        
         .lang-icon {
             font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* تأثير التلاشي للنصوص */
-        .fade-transition {
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        
-        .fade-out {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        
-        .fade-in {
-            opacity: 0;
-            transform: translateY(-10px);
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         /* الخلفية السماوية السوداء */
@@ -319,10 +280,6 @@
             text-align: center;
             font-weight: 600;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .link-btn {
@@ -375,16 +332,7 @@
             left: 100%;
         }
         
-        /* نص إضافي في أسفل الصفحة */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #aaccff;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            min-height: 30px;
-        }
+        /* تم إزالة قسم .footer بالكامل */
         
         @media (max-width: 768px) {
             .container {
@@ -404,11 +352,6 @@
                 top: 15px;
                 left: 15px;
             }
-            
-            .image-title {
-                min-height: 50px;
-                font-size: 1.4rem;
-            }
         }
         
         @media (max-width: 480px) {
@@ -427,11 +370,6 @@
             .lang-btn {
                 padding: 8px 16px;
                 font-size: 0.8rem;
-            }
-            
-            .image-title {
-                min-height: 40px;
-                font-size: 1.3rem;
             }
         }
     </style>
@@ -456,7 +394,7 @@
     
     <!-- المحتوى الرئيسي -->
     <div class="header">
-        <h1 id="mainTitle" class="fade-transition">معرض الصور السماوي</h1>
+        <h1 id="mainTitle">معرض الصور السماوي</h1>
     </div>
     
     <div class="container">
@@ -466,8 +404,8 @@
                 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي">
             </div>
             <div class="content">
-                <h3 class="image-title fade-transition" id="title1">منظر طبيعي</h3>
-                <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn fade-transition" id="btn1">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title1">منظر طبيعي</h3>
+                <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn" id="btn1">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -477,8 +415,8 @@
                 <img src="https://images.unsplash.com/photo-1518834103329-356dd8f3281c" alt="حيوان أسد">
             </div>
             <div class="content">
-                <h3 class="image-title fade-transition" id="title2">أسد في البرية</h3>
-                <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn fade-transition" id="btn2">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title2">أسد في البرية</h3>
+                <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn" id="btn2">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -488,8 +426,8 @@
                 <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="طعام صحي">
             </div>
             <div class="content">
-                <h3 class="image-title fade-transition" id="title3">طعام صحي</h3>
-                <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn fade-transition" id="btn3">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title3">طعام صحي</h3>
+                <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn" id="btn3">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -499,15 +437,12 @@
                 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية">
             </div>
             <div class="content">
-                <h3 class="image-title fade-transition" id="title4">تقنية حديثة</h3>
-                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn fade-transition" id="btn4">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title4">تقنية حديثة</h3>
+                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn" id="btn4">فتح رابط الصورة</a>
             </div>
         </div>
     </div>
-    
-    <div class="footer fade-transition" id="footerText">
-        جميع الصور من موقع Unsplash
-    </div>
+    <!-- تم إزالة النص "جميع الصور من موقع Unsplash" بالكامل -->
 
     <script>
         // بيانات اللغات
@@ -522,8 +457,8 @@
                 btn1: "فتح رابط الصورة",
                 btn2: "فتح رابط الصورة",
                 btn3: "فتح رابط الصورة",
-                btn4: "فتح رابط الصورة",
-                footerText: "جميع الصور من موقع Unsplash"
+                btn4: "فتح رابط الصورة"
+                // تم إزالة footerText
             },
             en: {
                 langText: "العربية",
@@ -535,86 +470,46 @@
                 btn1: "Open Image Link",
                 btn2: "Open Image Link",
                 btn3: "Open Image Link",
-                btn4: "Open Image Link",
-                footerText: "All images from Unsplash"
+                btn4: "Open Image Link"
+                // تم إزالة footerText
             }
         };
         
         // الحالة الحالية للغة
         let currentLang = 'ar';
-        let isTransitioning = false;
         
-        // العناصر التي سيتم تحديثها
-        const textElements = [
-            'langText', 'mainTitle', 'title1', 'title2', 'title3', 'title4',
-            'btn1', 'btn2', 'btn3', 'btn4', 'footerText'
-        ];
-        
-        // دالة تبديل اللغة مع تأثيرات سلسة
-        async function toggleLanguage() {
-            // منع النقر المتعدد
-            if (isTransitioning) return;
-            isTransitioning = true;
-            
-            const langBtn = document.getElementById('langToggle');
-            
-            // إضافة تأثير التحميل على الزر
-            langBtn.classList.add('loading');
-            
-            // 1. تأثير الخروج للنصوص الحالية
-            textElements.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.classList.add('fade-out');
-                }
-            });
-            
-            // انتظار تأثير الخروج
-            await new Promise(resolve => setTimeout(resolve, 300));
-            
-            // 2. تبديل اللغة
+        // دالة تبديل اللغة
+        function toggleLanguage() {
+            // تبديل اللغة
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             
             // تغيير اتجاه الصفحة
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
             
-            // 3. تحديث النصوص
+            // تحديث جميع النصوص
+            updateTexts();
+        }
+        
+        // دالة تحديث النصوص
+        function updateTexts() {
             const langData = translations[currentLang];
             
-            textElements.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.textContent = langData[id];
-                    element.classList.remove('fade-out');
-                    element.classList.add('fade-in');
-                }
-            });
+            // تحديث جميع العناصر
+            document.getElementById('langText').textContent = langData.langText;
+            document.getElementById('mainTitle').textContent = langData.mainTitle;
+            document.getElementById('title1').textContent = langData.title1;
+            document.getElementById('title2').textContent = langData.title2;
+            document.getElementById('title3').textContent = langData.title3;
+            document.getElementById('title4').textContent = langData.title4;
+            document.getElementById('btn1').textContent = langData.btn1;
+            document.getElementById('btn2').textContent = langData.btn2;
+            document.getElementById('btn3').textContent = langData.btn3;
+            document.getElementById('btn4').textContent = langData.btn4;
+            // تم إزالة تحديث footerText
             
-            // تحديث عنوان الصفحة
+            // تحديث العنوان في تبويب المتصفح
             document.title = langData.mainTitle;
-            
-            // 4. إزالة تأثير الدخول بعد التأخير
-            await new Promise(resolve => setTimeout(resolve, 300));
-            
-            textElements.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.classList.remove('fade-in');
-                }
-            });
-            
-            // 5. إزالة تأثير التحميل
-            langBtn.classList.remove('loading');
-            
-            // إعادة تفعيل النقر على الزر
-            isTransitioning = false;
-            
-            // تأثير اهتزاز خفيف للزر للدلالة على النجاح
-            langBtn.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                langBtn.style.transform = '';
-            }, 200);
         }
         
         // إضافة حدث النقر على زر اللغة
