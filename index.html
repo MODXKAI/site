@@ -1,175 +1,281 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAI Mods FF</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Tahoma, Arial;
-}
-
-body{
-    background:#0f0f0f;
-    color:#fff;
-}
-
-header{
-    background:#111;
-    padding:15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
-    color:#00ff9d;
-}
-
-.lang-switch{
-    text-align:center;
-    margin:15px 0;
-}
-
-.lang-switch button{
-    background:none;
-    border:1px solid #00ff9d;
-    color:#00ff9d;
-    padding:6px 18px;
-    border-radius:20px;
-    cursor:pointer;
-    margin:0 5px;
-}
-
-.container{
-    width:95%;
-    max-width:1000px;
-    margin:20px auto;
-}
-
-.mod{
-    background:#161616;
-    border-radius:15px;
-    margin-bottom:25px;
-    overflow:hidden;
-    box-shadow:0 0 15px rgba(0,0,0,.6);
-}
-
-.mod img{
-    width:100%;
-    display:block;
-}
-
-.mod-content{
-    padding:15px;
-}
-
-.mod h2{
-    font-size:20px;
-    margin-bottom:8px;
-    color:#00ff9d;
-}
-
-.mod .version{
-    font-size:14px;
-    color:#aaa;
-    margin-bottom:10px;
-}
-
-.mod p{
-    font-size:15px;
-    line-height:1.7;
-    color:#ddd;
-}
-
-.download{
-    display:inline-block;
-    margin-top:15px;
-    background:linear-gradient(45deg,#0066ff,#00ccff);
-    color:#fff;
-    padding:10px 30px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-footer{
-    text-align:center;
-    padding:20px;
-    color:#777;
-    font-size:14px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع معرض الصور - تطبيق Gaj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .card-description {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(to right, #1c67e3, #5a0ac5);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        }
+        
+        .download-btn i {
+            margin-left: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-<header>
-⚡ KAI MODS FREE FIRE
-</header>
-
-<div class="lang-switch">
-    <button onclick="setLang('ar')">العربية</button>
-    <button onclick="setLang('en')">English</button>
-</div>
-
-<div class="container">
-
-<!-- AR -->
-<div id="ar">
-
-<div class="mod">
-    <img src="https://i.imgur.com/6QZ6QZK.jpg">
-    <div class="mod-content">
-        <h2>مود سكن Free Fire OB50</h2>
-        <div class="version">الإصدار: v28</div>
-        <p>
-        مود عرض سكنات نادرة مع مؤثرات كاملة.
-        يعمل على أندرويد و iOS.
-        </p>
-        <a href="#" class="download" onclick="demo()">تحميل</a>
+    <div class="header">
+        <h1><i class="fas fa-images"></i> معرض الصور التفاعلي</h1>
+        <p>تصميم مشابه لتطبيق Gaj مع إمكانية تحميل الصور أو فتح الروابط</p>
     </div>
-</div>
-
-</div>
-
-<!-- EN -->
-<div id="en" style="display:none" dir="ltr">
-
-<div class="mod">
-    <img src="https://i.imgur.com/6QZ6QZK.jpg">
-    <div class="mod-content">
-        <h2>Free Fire Skin Mod OB50</h2>
-        <div class="version">Version: v28</div>
-        <p>
-        Visual skin mod with full effects.
-        Works on Android & iOS.
-        </p>
-        <a href="#" class="download" onclick="demo()">Download</a>
+    
+    <div class="container">
+        <!-- الصورة الأولى -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">المناظر الطبيعية الخلابة</h3>
+                <p class="card-description">مناظر طبيعية ساحرة من جميع أنحاء العالم، تظهر جمال الطبيعة في أبها صورها. هذه الصورة تلتقط لحظة غروب الشمس على الجبال.</p>
+                <a href="#" class="download-btn" id="download1">
+                    <i class="fas fa-download"></i> تحميل الصورة
+                </a>
+            </div>
+        </div>
+        
+        <!-- الصورة الثانية -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="الفضاء والنجوم" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">عجائب الفضاء والنجوم</h3>
+                <p class="card-description">اكتشف عجائب الكون من خلال هذه الصورة المذهلة للنجوم والمجرات. يمكن استخدام هذه الصورة كخلفية لشاشة الهاتف أو الكمبيوتر.</p>
+                <a href="https://unsplash.com/photos/_SFJhRPzJHs" target="_blank" class="download-btn" id="openLink1">
+                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
+                </a>
+            </div>
+        </div>
+        
+        <!-- الصورة الثالثة -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1518834103329-356dd8f3281c" alt="حيوانات برية" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">الحيوانات البرية</h3>
+                <p class="card-description">صورة مذهلة لحيوان الأسد في موطنه الطبيعي. تعكس هذه الصورة قوة وجمال الحياة البرية والتنوع الحيوي في كوكبنا.</p>
+                <a href="#" class="download-btn" id="download2">
+                    <i class="fas fa-download"></i> تحميل الصورة
+                </a>
+            </div>
+        </div>
+        
+        <!-- الصورة الرابعة -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e" alt="العمارة الحديثة" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">عمارة حديثة مذهلة</h3>
+                <p class="card-description">تصميم معماري حديث يظهر الإبداع البشري في تشكيل المدن. هذه الصورة تظهر دقة التفاصيل في البناء المعماري الحديث.</p>
+                <a href="https://unsplash.com/photos/tZCrFpSNiIQ" target="_blank" class="download-btn" id="openLink2">
+                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
+                </a>
+            </div>
+        </div>
+        
+        <!-- الصورة الخامسة -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="أطباق غذائية" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">أطباق غذائية شهية</h3>
+                <p class="card-description">أطباق صحية ولذيذة من مختلف المطابخ العالمية. هذه الصورة تعرض طبقًا صحيًا يمكن تحضيره في المنزل بسهولة.</p>
+                <a href="#" class="download-btn" id="download3">
+                    <i class="fas fa-download"></i> تحميل الصورة
+                </a>
+            </div>
+        </div>
+        
+        <!-- الصورة السادسة -->
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية حديثة" class="card-image">
+            <div class="card-content">
+                <h3 class="card-title">التقنية الحديثة</h3>
+                <p class="card-description">أحدث الأجهزة التقنية التي تجعل حياتنا أسهل وأكثر إنتاجية. هذه الصورة تظهر أحدث التطورات في عالم التكنولوجيا.</p>
+                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="download-btn" id="openLink3">
+                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
+                </a>
+            </div>
+        </div>
     </div>
-</div>
+    
+    <div class="footer">
+        <p>© 2023 معرض الصور التفاعلي | تصميم مشابه لتطبيق Gaj</p>
+        <p>جميع الصور من موقع <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
+    </div>
 
-</div>
-
-</div>
-
-<footer>
-© 2026 KAI Mods
-</footer>
-
-<script>
-function setLang(lang){
-    document.getElementById("ar").style.display = lang === "ar" ? "block" : "none";
-    document.getElementById("en").style.display = lang === "en" ? "block" : "none";
-    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-    document.documentElement.lang = lang;
-}
-
-function demo(){
-    alert("🔧 هذا رابط تجريبي فقط");
-}
-</script>
-
+    <script>
+        // إضافة تفاعلية لأزرار التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            // أزرار التحميل
+            const downloadButtons = document.querySelectorAll('a[id^="download"]');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // الحصول على عنوان الصورة من العنصر img داخل نفس البطاقة
+                    const card = this.closest('.card');
+                    const imgSrc = card.querySelector('img').src;
+                    const imgTitle = card.querySelector('.card-title').textContent;
+                    
+                    // محاكاة عملية التحميل
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+                    this.style.backgroundColor = '#4CAF50';
+                    
+                    // إنشاء رابط تحميل مؤقت
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = imgSrc;
+                        link.download = imgTitle.replace(/\s+/g, '_') + '.jpg';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        this.innerHTML = '<i class="fas fa-check"></i> تم التحميل!';
+                        
+                        // إعادة الزر إلى حالته الأصلية بعد ثانيتين
+                        setTimeout(() => {
+                            this.innerHTML = '<i class="fas fa-download"></i> تحميل الصورة';
+                            this.style.backgroundColor = '';
+                        }, 2000);
+                    }, 1500);
+                });
+            });
+            
+            // أزرار فتح الرابط (لا تحتاج إلى تعديل)
+            const linkButtons = document.querySelectorAll('a[id^="openLink"]');
+            linkButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // عرض رسالة تأكيد
+                    const card = this.closest('.card');
+                    const imgTitle = card.querySelector('.card-title').textContent;
+                    console.log(`فتح رابط لصورة: ${imgTitle}`);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
