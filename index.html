@@ -1,86 +1,41 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAI MODX</title>
+    <title>&#1605;&#1585;&#1581;&#1576;&#1575;&#1611; &#1576;&#1603;</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            color: #fff;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* زر تبديل اللغة */
-        .language-switcher {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-        
-        .lang-btn {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #000510;
             color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
         
-        .lang-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .lang-btn:active {
-            transform: translateY(0);
-        }
-        
-        .lang-icon {
-            font-size: 1.1rem;
-        }
-        
-        /* الخلفية السماوية السوداء */
+        /* &#1582;&#1604;&#1601;&#1610;&#1577; &#1587;&#1608;&#1583;&#1575;&#1569; &#1606;&#1602;&#1610;&#1577; */
         .space {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000510;
-            z-index: -3;
+            background: #000000;
+            z-index: -2;
         }
         
-        /* النجوم الصغيرة المتلألئة */
-        .stars-container {
+        /* &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1575;&#1604;&#1589;&#1594;&#1610;&#1585;&#1577; &#1601;&#1602;&#1591; */
+        .stars {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -2;
         }
         
         .star {
@@ -90,18 +45,12 @@
             animation: twinkle 4s infinite;
         }
         
-        /* المذنبات الكثيرة - خطوط زرقاء بسيطة */
-        .meteors-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
         
-        /* مذنبات عادية زرقاء */
+        /* &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578; - &#1575;&#1604;&#1603;&#1579;&#1610;&#1585; &#1605;&#1606;&#1607;&#1575; */
         .meteor {
             position: absolute;
             width: 1.5px;
@@ -113,31 +62,6 @@
             opacity: 0.7;
         }
         
-        /* مذنبات كبيرة زرقاء */
-        .meteor-large {
-            position: absolute;
-            width: 2.5px;
-            height: 80px;
-            background: linear-gradient(to bottom, transparent, #00aaff);
-            transform: rotate(-45deg);
-            animation: meteorFallLarge linear infinite;
-            filter: drop-shadow(0 0 15px #00aaff);
-            opacity: 0.8;
-        }
-        
-        /* مذنبات بيضاء */
-        .meteor-white {
-            position: fixed;
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, transparent, #ffffff);
-            transform: rotate(-45deg);
-            animation: meteorFallWhite linear infinite;
-            filter: drop-shadow(0 0 6px #ffffff);
-            opacity: 0.6;
-        }
-        
-        /* حركة المذنبات */
         @keyframes meteorFall {
             0% {
                 top: -100px;
@@ -152,6 +76,18 @@
                 left: 100vw;
                 opacity: 0;
             }
+        }
+        
+        /* &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1576;&#1610;&#1585;&#1577; &#1586;&#1585;&#1602;&#1575;&#1569; */
+        .meteor-large {
+            position: absolute;
+            width: 2.5px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #00aaff);
+            transform: rotate(-45deg);
+            animation: meteorFallLarge linear infinite;
+            filter: drop-shadow(0 0 15px #00aaff);
+            opacity: 0.8;
         }
         
         @keyframes meteorFallLarge {
@@ -170,6 +106,18 @@
             }
         }
         
+        /* &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1576;&#1610;&#1590;&#1575;&#1569; */
+        .meteor-white {
+            position: absolute;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #ffffff);
+            transform: rotate(-45deg);
+            animation: meteorFallWhite linear infinite;
+            filter: drop-shadow(0 0 6px #ffffff);
+            opacity: 0.6;
+        }
+        
         @keyframes meteorFallWhite {
             0% {
                 top: -80px;
@@ -186,17 +134,9 @@
             }
         }
         
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-        
-        /* المحتوى الرئيسي */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 30px;
-            position: relative;
+        /* &#1575;&#1604;&#1606;&#1589; &#1601;&#1602;&#1591; &#1601;&#1610; &#1575;&#1604;&#1605;&#1606;&#1578;&#1589;&#1601; */
+        .text-container {
+            z-index: 10;
             animation: fadeIn 2s;
         }
         
@@ -205,317 +145,41 @@
             to { opacity: 1; }
         }
         
-        .header h1 {
-            font-size: 3rem;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
-                         0 0 20px rgba(100, 150, 255, 0.5),
-                         0 0 30px rgba(50, 100, 255, 0.3);
+        .main-text {
+            font-size: 80px;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 40px #66aaff, 0 0 80px #66aaff;
             letter-spacing: 1px;
         }
         
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            position: relative;
-        }
-        
-        .image-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(100, 150, 255, 0.2),
-                inset 0 0 20px rgba(255, 255, 255, 0.05);
-            transition: all 0.5s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            position: relative;
-        }
-        
-        .image-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(100, 150, 255, 0.4),
-                0 0 50px rgba(50, 100, 255, 0.3);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        
-        .image-container {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        
-        .image-card:hover .image-container img {
-            transform: scale(1.15);
-        }
-        
-        .content {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            position: relative;
-        }
-        
-        .image-title {
-            font-size: 1.6rem;
-            margin-bottom: 25px;
-            color: #fff;
-            text-align: center;
-            font-weight: 600;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
-        }
-        
-        .link-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, 
-                rgba(70, 130, 255, 0.9), 
-                rgba(100, 70, 255, 0.9));
-            color: white;
-            padding: 14px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.4s ease;
-            text-align: center;
-            margin-top: auto;
-            box-shadow: 
-                0 5px 15px rgba(0, 0, 0, 0.4),
-                0 0 20px rgba(70, 130, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .link-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.3), 
-                transparent);
-            transition: left 0.7s ease;
-        }
-        
-        .link-btn:hover {
-            background: linear-gradient(135deg, 
-                rgba(90, 150, 255, 0.95), 
-                rgba(120, 90, 255, 0.95));
-            transform: translateY(-5px);
-            box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(90, 150, 255, 0.6),
-                0 0 40px rgba(120, 90, 255, 0.4);
-        }
-        
-        .link-btn:hover::before {
-            left: 100%;
-        }
-        
-        /* تم إزالة قسم .footer بالكامل */
-        
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .image-container {
-                height: 200px;
-            }
-            
-            .language-switcher {
-                top: 15px;
-                left: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            
-            body {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-            
-            .lang-btn {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
+        .sub-text {
+            font-size: 22px;
+            color: #aaccff;
+            margin-top: 5px;
+            opacity: 0.9;
+            text-shadow: 0 0 20px #aaccff;
         }
     </style>
 </head>
 <body>
-    <!-- زر تبديل اللغة -->
-    <div class="language-switcher">
-        <button class="lang-btn" id="langToggle">
-            <span class="lang-icon">🌐</span>
-            <span id="langText">English</span>
-        </button>
-    </div>
-    
-    <!-- الفضاء الأسود -->
+    <!-- &#1575;&#1604;&#1601;&#1590;&#1575;&#1569; &#1575;&#1604;&#1571;&#1587;&#1608;&#1583; -->
     <div class="space"></div>
     
-    <!-- النجوم -->
-    <div class="stars-container" id="stars"></div>
+    <!-- &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; -->
+    <div class="stars" id="stars"></div>
     
-    <!-- المذنبات الكثيرة -->
-    <div class="meteors-container" id="meteors"></div>
+    <!-- &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578; - &#1587;&#1610;&#1578;&#1605; &#1573;&#1590;&#1575;&#1601;&#1578;&#1607;&#1575; &#1576;&#1575;&#1604;&#1580;&#1575;&#1601;&#1575;&#1587;&#1603;&#1585;&#1610;&#1576;&#1578; -->
+    <div id="meteors"></div>
     
-    <!-- المحتوى الرئيسي -->
-    <div class="header">
-        <h1 id="mainTitle">KAI MODX</h1>
+    <!-- &#1575;&#1604;&#1606;&#1589; &#1601;&#1610; &#1575;&#1604;&#1605;&#1606;&#1578;&#1589;&#1601; -->
+    <div class="text-container">
+        <div class="main-text">&#1605;&#1585;&#1581;&#1576;&#1575;&#1611; &#1576;&#1603;</div>
+        <div class="sub-text">&#1605;&#1608;&#1602;&#1593;&#1606;&#1575; &#1575;&#1604;&#1571;&#1608;&#1604;</div>
     </div>
-    
-    <div class="container">
-        <!-- الصورة الأولى -->
-        <div class="image-card">
-            <div class="image-container">
-                <img src="https://695f76ee77524f4dfae4c604.imgix.net/ic_launcher.jpg" alt="بوت كاي">
-            </div>
-            <div class="content">
-                <h3 class="image-title" id="title1">بوت كاي</h3>
-                <a href="https://linkjust.com/KAI_BOT_V1" target="_blank" class="link-btn" id="btn1">تحميل</a>
-            </div>
-        </div>
-        
-        <!-- الصورة الثانية -->
-        <div class="image-card">
-            <div class="image-container">
-                <img src="https://695f76ee77524f4dfae4c604.imgix.net/Instagram_logo_2022.svg.png" alt="صفحتنا على انستغرام">
-            </div>
-            <div class="content">
-                <h3 class="image-title" id="title2">صفحتنا على انستغرام</h3>
-                <a href="https://www.instagram.com/kai_modx" target="_blank" class="link-btn" id="btn2">فتح</a>
-            </div>
-        </div>
-        
-        <!-- الصورة الثالثة -->
-        <div class="image-card">
-            <div class="image-container">
-                <img src="https://695f76ee77524f4dfae4c604.imgix.net/67f9bd80-c4e1-4ae7-ba5e-a85b3911993f-400x400.webp" alt="صفحتنا على تيك توك">
-            </div>
-            <div class="content">
-                <h3 class="image-title" id="title3">صفحتنا على تيك توك</h3>
-                <a href="https://www.tiktok.com/@kai_modx" target="_blank" class="link-btn" id="btn3">فتح</a>
-            </div>
-        </div>
-        
-        <!-- الصورة الرابعة -->
-        <div class="image-card">
-            <div class="image-container">
-                <img src="https://695f76ee77524f4dfae4c604.imgix.net/ic_launcher.png" alt="قناتنا على يوتيوب">
-            </div>
-            <div class="content">
-                <h3 class="image-title" id="title4">قناتنا على يوتيوب</h3>
-                <a href="https://youtube.com/@kai_modx" target="_blank" class="link-btn" id="btn4">فتح</a>
-            </div>
-        </div>
-    </div>
-    <!-- تم إزالة النص "جميع الصور من موقع Unsplash" بالكامل -->
 
     <script>
-        // بيانات اللغات
-        const translations = {
-            ar: {
-                langText: "English",
-                mainTitle: "KAI MODX",
-                title1: "بوت كاي",
-                title2: "صفحتنا على انستغرام",
-                title3: "صفحتنا على تيك توك",
-                title4: "قناتنا على يوتيوبة",
-                btn1: "تحميل",
-                btn2: "فتح",
-                btn3: "فتح",
-                btn4: "فتح"
-                // تم إزالة footerText
-            },
-            en: {
-                langText: "العربية",
-                mainTitle: "KAI MODX",
-                title1: "Bot Kai",
-                title2: "Instagram page",
-                title3: "TikTok page",
-                title4: "channel on YouTube",
-                btn1: "download",
-                btn2: "Open",
-                btn3: "Open",
-                btn4: "Open"
-                // تم إزالة footerText
-            }
-        };
-        
-        // الحالة الحالية للغة
-        let currentLang = 'ar';
-        
-        // دالة تبديل اللغة
-        function toggleLanguage() {
-            // تبديل اللغة
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            
-            // تغيير اتجاه الصفحة
-            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = currentLang;
-            
-            // تحديث جميع النصوص
-            updateTexts();
-        }
-        
-        // دالة تحديث النصوص
-        function updateTexts() {
-            const langData = translations[currentLang];
-            
-            // تحديث جميع العناصر
-            document.getElementById('langText').textContent = langData.langText;
-            document.getElementById('mainTitle').textContent = langData.mainTitle;
-            document.getElementById('title1').textContent = langData.title1;
-            document.getElementById('title2').textContent = langData.title2;
-            document.getElementById('title3').textContent = langData.title3;
-            document.getElementById('title4').textContent = langData.title4;
-            document.getElementById('btn1').textContent = langData.btn1;
-            document.getElementById('btn2').textContent = langData.btn2;
-            document.getElementById('btn3').textContent = langData.btn3;
-            document.getElementById('btn4').textContent = langData.btn4;
-            // تم إزالة تحديث footerText
-            
-            // تحديث العنوان في تبويب المتصفح
-            document.title = langData.mainTitle;
-        }
-        
-        // إضافة حدث النقر على زر اللغة
-        document.getElementById('langToggle').addEventListener('click', toggleLanguage);
-        
-        // 1. إنشاء النجوم الصغيرة
+        // 1. &#1573;&#1606;&#1588;&#1575;&#1569; &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1575;&#1604;&#1589;&#1594;&#1610;&#1585;&#1577;
         function createStars() {
             const stars = document.getElementById('stars');
             
@@ -523,20 +187,20 @@
                 const star = document.createElement('div');
                 star.className = 'star';
                 
-                // حجم صغير جداً
+                // &#1581;&#1580;&#1605; &#1589;&#1594;&#1610;&#1585;
                 const size = Math.random() * 2 + 0.5;
                 star.style.width = size + 'px';
                 star.style.height = size + 'px';
                 
-                // موقع عشوائي
+                // &#1605;&#1608;&#1602;&#1593; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 
-                // ألوان متنوعة
+                // &#1571;&#1604;&#1608;&#1575;&#1606; &#1605;&#1578;&#1606;&#1608;&#1593;&#1577;
                 const colors = ['#ffffff', '#eef5ff', '#d4e4ff', '#aaccff'];
                 star.style.background = colors[Math.floor(Math.random() * colors.length)];
                 
-                // وميض عشوائي
+                // &#1608;&#1605;&#1610;&#1590; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
                 const delay = Math.random() * 10;
                 const duration = Math.random() * 4 + 2;
                 star.style.animationDelay = delay + 's';
@@ -546,12 +210,12 @@
             }
         }
         
-        // 2. إنشاء مذنب واحد
+        // 2. &#1573;&#1606;&#1588;&#1575;&#1569; &#1605;&#1584;&#1606;&#1576; &#1608;&#1575;&#1581;&#1583;
         function createMeteor(type = 'normal') {
             const meteors = document.getElementById('meteors');
             const meteor = document.createElement('div');
             
-            // اختيار نوع المذنب
+            // &#1575;&#1582;&#1578;&#1610;&#1575;&#1585; &#1606;&#1608;&#1593; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;
             if (type === 'large') {
                 meteor.className = 'meteor-large';
             } else if (type === 'white') {
@@ -560,24 +224,24 @@
                 meteor.className = 'meteor';
             }
             
-            // موقع عشوائي
+            // &#1605;&#1608;&#1602;&#1593; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
             meteor.style.left = Math.random() * 100 + '%';
             meteor.style.top = Math.random() * 50 + '%';
             
-            // سرعة عشوائية
+            // &#1587;&#1585;&#1593;&#1577; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;&#1577;
             let duration;
             if (type === 'large') {
-                duration = Math.random() * 3 + 1.5; // سريع
+                duration = Math.random() * 3 + 1.5; // &#1587;&#1585;&#1610;&#1593;
             } else if (type === 'white') {
-                duration = Math.random() * 5 + 3; // متوسط
+                duration = Math.random() * 5 + 3; // &#1605;&#1578;&#1608;&#1587;&#1591;
             } else {
-                duration = Math.random() * 4 + 2; // عادي
+                duration = Math.random() * 4 + 2; // &#1593;&#1575;&#1583;&#1610;
             }
             
             meteor.style.animationDuration = duration + 's';
             meteor.style.animationDelay = Math.random() * 2 + 's';
             
-            // طول عشوائي
+            // &#1591;&#1608;&#1604; &#1593;&#1588;&#1608;&#1575;&#1574;&#1610;
             if (type === 'large') {
                 meteor.style.height = (Math.random() * 60 + 60) + 'px';
             } else if (type === 'white') {
@@ -588,7 +252,7 @@
             
             meteors.appendChild(meteor);
             
-            // إزالة المذنب بعد انتهاء الحركة
+            // &#1573;&#1586;&#1575;&#1604;&#1577; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576; &#1576;&#1593;&#1583; &#1575;&#1606;&#1578;&#1607;&#1575;&#1569; &#1575;&#1604;&#1581;&#1585;&#1603;&#1577;
             setTimeout(() => {
                 if (meteor.parentNode) {
                     meteor.remove();
@@ -596,12 +260,12 @@
             }, duration * 1000 + 1000);
         }
         
-        // 3. إنشاء الكثير من المذنبات
+        // 3. &#1573;&#1606;&#1588;&#1575;&#1569; &#1575;&#1604;&#1603;&#1579;&#1610;&#1585; &#1605;&#1606; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578;
         function createManyMeteors() {
-            // إنشاء 15 مذنباً بشكل فوري
+            // &#1573;&#1606;&#1588;&#1575;&#1569; 15 &#1605;&#1584;&#1606;&#1576;&#1575;&#1611; &#1576;&#1588;&#1603;&#1604; &#1601;&#1608;&#1585;&#1610;
             for(let i = 0; i < 15; i++) {
                 setTimeout(() => {
-                    // توزيع الأنواع: 50% عادي, 30% كبير, 20% أبيض
+                    // &#1578;&#1608;&#1586;&#1610;&#1593; &#1575;&#1604;&#1571;&#1606;&#1608;&#1575;&#1593;: 50% &#1593;&#1575;&#1583;&#1610;&#1548; 30% &#1603;&#1576;&#1610;&#1585;&#1548; 20% &#1571;&#1576;&#1610;&#1590;
                     const rand = Math.random();
                     if (rand < 0.5) {
                         createMeteor('normal');
@@ -610,18 +274,18 @@
                     } else {
                         createMeteor('white');
                     }
-                }, i * 300); // تأخير بين كل مذنب
+                }, i * 300); // &#1578;&#1571;&#1582;&#1610;&#1585; &#1576;&#1610;&#1606; &#1603;&#1604; &#1605;&#1584;&#1606;&#1576;
             }
         }
         
-        // 4. استمرار إضافة المذنبات
+        // 4. &#1575;&#1587;&#1578;&#1605;&#1585;&#1575;&#1585; &#1573;&#1590;&#1575;&#1601;&#1577; &#1575;&#1604;&#1605;&#1584;&#1606;&#1576;&#1575;&#1578;
         function startMeteorShower() {
-            // إنشاء دفعة أولية
+            // &#1573;&#1606;&#1588;&#1575;&#1569; &#1583;&#1601;&#1593;&#1577; &#1571;&#1608;&#1604;&#1610;&#1577;
             createManyMeteors();
             
-            // استمرار إضافة مذنبات كل 3-5 ثواني
+            // &#1575;&#1587;&#1578;&#1605;&#1585;&#1575;&#1585; &#1573;&#1590;&#1575;&#1601;&#1577; &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1604; 3-5 &#1579;&#1608;&#1575;&#1606;&#1610;
             setInterval(() => {
-                // إضافة 3-6 مذنبات كل مرة
+                // &#1573;&#1590;&#1575;&#1601;&#1577; 3-6 &#1605;&#1584;&#1606;&#1576;&#1575;&#1578; &#1603;&#1604; &#1605;&#1585;&#1577;
                 const count = Math.floor(Math.random() * 4) + 3;
                 for(let i = 0; i < count; i++) {
                     setTimeout(() => {
@@ -633,12 +297,30 @@
             }, 3000);
         }
         
-        // 5. البدء بكل شيء
+        // 5. &#1581;&#1585;&#1603;&#1577; &#1575;&#1604;&#1606;&#1580;&#1608;&#1605; &#1605;&#1593; &#1575;&#1604;&#1605;&#1575;&#1608;&#1587;
+        function initMouseEffect() {
+            let mouseX = 0, mouseY = 0;
+            
+            document.addEventListener('mousemove', function(e) {
+                mouseX = (e.clientX / window.innerWidth - 0.5) * 8;
+                mouseY = (e.clientY / window.innerHeight - 0.5) * 8;
+            });
+            
+            function updateStars() {
+                document.querySelector('.stars').style.transform = 
+                    `translate(${mouseX}px, ${mouseY}px)`;
+                requestAnimationFrame(updateStars);
+            }
+            updateStars();
+        }
+        
+        // 6. &#1576;&#1583;&#1569; &#1603;&#1604; &#1588;&#1610;&#1569;
         window.onload = function() {
             createStars();
             startMeteorShower();
+            initMouseEffect();
             
-            // إضافة نجوم جديدة بين الحين والآخر
+            // &#1573;&#1590;&#1575;&#1601;&#1577; &#1606;&#1580;&#1608;&#1605; &#1580;&#1583;&#1610;&#1583;&#1577; &#1576;&#1610;&#1606; &#1575;&#1604;&#1581;&#1610;&#1606; &#1608;&#1575;&#1604;&#1570;&#1582;&#1585;
             setInterval(() => {
                 if(Math.random() > 0.5) {
                     const stars = document.getElementById('stars');
