@@ -22,193 +22,148 @@
             overflow-x: hidden;
         }
         
-        /* الخلفية السماوية */
-        .sky-bg {
+        /* الخلفية السماوية السوداء */
+        .space {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            background: linear-gradient(180deg, 
-                #000428 0%, 
-                #004e92 100%);
-            overflow: hidden;
+            background: #000510;
+            z-index: -3;
         }
         
-        /* النجوم */
+        /* النجوم الصغيرة المتلألئة */
         .stars-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-        
-        /* إنشاء النجوم بشكل عشوائي */
-        .star:nth-child(1) { top: 10%; left: 15%; width: 2px; height: 2px; animation-delay: 0s; }
-        .star:nth-child(2) { top: 20%; left: 70%; width: 3px; height: 3px; animation-delay: 0.5s; }
-        .star:nth-child(3) { top: 30%; left: 40%; width: 1px; height: 1px; animation-delay: 1s; }
-        .star:nth-child(4) { top: 40%; left: 80%; width: 2px; height: 2px; animation-delay: 1.5s; }
-        .star:nth-child(5) { top: 50%; left: 20%; width: 3px; height: 3px; animation-delay: 2s; }
-        .star:nth-child(6) { top: 60%; left: 60%; width: 2px; height: 2px; animation-delay: 2.5s; }
-        .star:nth-child(7) { top: 70%; left: 30%; width: 1px; height: 1px; animation-delay: 0.3s; }
-        .star:nth-child(8) { top: 80%; left: 50%; width: 3px; height: 3px; animation-delay: 0.8s; }
-        .star:nth-child(9) { top: 90%; left: 10%; width: 2px; height: 2px; animation-delay: 1.3s; }
-        .star:nth-child(10) { top: 15%; left: 90%; width: 3px; height: 3px; animation-delay: 1.8s; }
-        .star:nth-child(11) { top: 25%; left: 25%; width: 2px; height: 2px; animation-delay: 0.2s; }
-        .star:nth-child(12) { top: 35%; left: 75%; width: 1px; height: 1px; animation-delay: 0.7s; }
-        .star:nth-child(13) { top: 45%; left: 45%; width: 3px; height: 3px; animation-delay: 1.2s; }
-        .star:nth-child(14) { top: 55%; left: 85%; width: 2px; height: 2px; animation-delay: 1.7s; }
-        .star:nth-child(15) { top: 65%; left: 35%; width: 1px; height: 1px; animation-delay: 2.2s; }
-        
-        /* المذنبات الحقيقية */
-        .comets-container {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
+            z-index: -2;
         }
         
-        .comet {
+        .star {
             position: absolute;
-            opacity: 0;
-            display: flex;
-            align-items: center;
-        }
-        
-        /* رأس المذنب (كرة متوهجة) */
-        .comet-head {
-            width: 15px;
-            height: 15px;
-            background: radial-gradient(circle, 
-                rgba(255, 255, 255, 1) 0%, 
-                rgba(255, 255, 200, 0.9) 30%, 
-                rgba(200, 230, 255, 0.6) 60%, 
-                transparent 100%);
+            background: white;
             border-radius: 50%;
-            box-shadow: 
-                0 0 20px 5px rgba(255, 255, 200, 0.8),
-                0 0 40px 10px rgba(200, 230, 255, 0.5);
-            z-index: 2;
+            animation: twinkle 4s infinite;
         }
         
-        /* ذيل المذنب (سلسلة من النقاط المتوهجة) */
-        .comet-trail {
-            display: flex;
-            gap: 8px;
-            margin-right: 8px;
-            direction: rtl;
-        }
-        
-        .trail-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 8px 2px rgba(255, 255, 200, 0.6);
-            animation: trail-pulse 1.5s infinite;
-        }
-        
-        /* توقيتات مختلفة للنقاط في الذيل */
-        .trail-dot:nth-child(1) { animation-delay: 0.1s; }
-        .trail-dot:nth-child(2) { animation-delay: 0.2s; opacity: 0.8; }
-        .trail-dot:nth-child(3) { animation-delay: 0.3s; opacity: 0.6; }
-        .trail-dot:nth-child(4) { animation-delay: 0.4s; opacity: 0.4; }
-        .trail-dot:nth-child(5) { animation-delay: 0.5s; opacity: 0.2; }
-        
-        /* مذنبات مختلفة باتجاهات واضحة */
-        .comet-1 {
-            top: -50px;
-            left: 15%;
-            animation: comet-fly-right 8s infinite 0s linear;
-        }
-        
-        .comet-2 {
-            top: -80px;
-            left: 40%;
-            animation: comet-fly-right 10s infinite 4s linear;
-        }
-        
-        .comet-3 {
-            top: -60px;
-            right: 20%;
-            animation: comet-fly-left 9s infinite 2s linear;
-            flex-direction: row-reverse;
-        }
-        
-        .comet-4 {
-            top: -100px;
-            right: 45%;
-            animation: comet-fly-left 11s infinite 6s linear;
-            flex-direction: row-reverse;
-        }
-        
-        .comet-5 {
-            top: -70px;
-            left: 70%;
-            animation: comet-fly-right 7s infinite 8s linear;
-        }
-        
-        /* سحب خفيفة */
-        .clouds {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-        }
-        
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            filter: blur(40px);
-        }
-        
-        .cloud-1 {
-            width: 400px;
-            height: 200px;
-            top: 10%;
-            right: 10%;
-        }
-        
-        .cloud-2 {
-            width: 300px;
-            height: 150px;
-            bottom: 20%;
-            left: 15%;
-        }
-        
-        /* تأثير الضباب السماوي */
-        .sky-overlay {
+        /* المذنبات الكثيرة - خطوط زرقاء بسيطة */
+        .meteors-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(100, 150, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(150, 100, 255, 0.1) 0%, transparent 40%);
+            pointer-events: none;
             z-index: -1;
         }
         
-        /* المحتوى */
+        /* مذنبات عادية زرقاء */
+        .meteor {
+            position: absolute;
+            width: 1.5px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, #66aaff);
+            transform: rotate(-45deg);
+            animation: meteorFall linear infinite;
+            filter: drop-shadow(0 0 8px #66aaff);
+            opacity: 0.7;
+        }
+        
+        /* مذنبات كبيرة زرقاء */
+        .meteor-large {
+            position: absolute;
+            width: 2.5px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #00aaff);
+            transform: rotate(-45deg);
+            animation: meteorFallLarge linear infinite;
+            filter: drop-shadow(0 0 15px #00aaff);
+            opacity: 0.8;
+        }
+        
+        /* مذنبات بيضاء */
+        .meteor-white {
+            position: absolute;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, transparent, #ffffff);
+            transform: rotate(-45deg);
+            animation: meteorFallWhite linear infinite;
+            filter: drop-shadow(0 0 6px #ffffff);
+            opacity: 0.6;
+        }
+        
+        /* حركة المذنبات */
+        @keyframes meteorFall {
+            0% {
+                top: -100px;
+                left: -100px;
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes meteorFallLarge {
+            0% {
+                top: -150px;
+                left: -150px;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes meteorFallWhite {
+            0% {
+                top: -80px;
+                left: -80px;
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                left: 100vw;
+                opacity: 0;
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* المحتوى الرئيسي */
         .header {
             text-align: center;
             margin-bottom: 60px;
             padding: 30px;
             position: relative;
+            animation: fadeIn 2s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .header h1 {
@@ -229,8 +184,8 @@
         }
         
         .image-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 
@@ -244,26 +199,13 @@
             position: relative;
         }
         
-        .image-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.5), 
-                transparent);
-        }
-        
         .image-card:hover {
             transform: translateY(-15px);
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.5),
                 0 0 30px rgba(100, 150, 255, 0.4),
                 0 0 50px rgba(50, 100, 255, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
         }
         
         .image-container {
@@ -351,51 +293,6 @@
             left: 100%;
         }
         
-        /* الأنيميشن */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-        
-        @keyframes trail-pulse {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes comet-fly-right {
-            0% {
-                opacity: 0;
-                transform: translateX(-100px) translateY(0);
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(100vw) translateY(100vh);
-            }
-        }
-        
-        @keyframes comet-fly-left {
-            0% {
-                opacity: 0;
-                transform: translateX(100px) translateY(0);
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-100vw) translateY(100vh);
-            }
-        }
-        
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: repeat(2, 1fr);
@@ -408,21 +305,6 @@
             
             .image-container {
                 height: 200px;
-            }
-            
-            /* تعديل المذنبات للجوال */
-            .comet-head {
-                width: 12px;
-                height: 12px;
-            }
-            
-            .trail-dot {
-                width: 5px;
-                height: 5px;
-            }
-            
-            .comet-trail {
-                gap: 6px;
             }
         }
         
@@ -438,104 +320,20 @@
             .header h1 {
                 font-size: 2rem;
             }
-            
-            /* إخفاء بعض المذنبات على الشاشات الصغيرة */
-            .comet-4, .comet-5 {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- الخلفية السماوية -->
-    <div class="sky-bg">
-        <div class="stars-container">
-            <!-- النجوم -->
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-            <div class="star"></div>
-        </div>
-        
-        <div class="clouds">
-            <div class="cloud cloud-1"></div>
-            <div class="cloud cloud-2"></div>
-        </div>
-        
-        <!-- المذنبات الحقيقية -->
-        <div class="comets-container">
-            <!-- مذنبات تتحرك من اليسار إلى اليمين -->
-            <div class="comet comet-1">
-                <div class="comet-head"></div>
-                <div class="comet-trail">
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                </div>
-            </div>
-            
-            <div class="comet comet-2">
-                <div class="comet-head"></div>
-                <div class="comet-trail">
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                </div>
-            </div>
-            
-            <!-- مذنبات تتحرك من اليمين إلى اليسار -->
-            <div class="comet comet-3">
-                <div class="comet-head"></div>
-                <div class="comet-trail">
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                </div>
-            </div>
-            
-            <div class="comet comet-4">
-                <div class="comet-head"></div>
-                <div class="comet-trail">
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                </div>
-            </div>
-            
-            <div class="comet comet-5">
-                <div class="comet-head"></div>
-                <div class="comet-trail">
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                    <div class="trail-dot"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- الفضاء الأسود -->
+    <div class="space"></div>
     
-    <div class="sky-overlay"></div>
+    <!-- النجوم -->
+    <div class="stars-container" id="stars"></div>
     
+    <!-- المذنبات الكثيرة -->
+    <div class="meteors-container" id="meteors"></div>
+    
+    <!-- المحتوى الرئيسي -->
     <div class="header">
         <h1>معرض الصور السماوي</h1>
     </div>
@@ -585,5 +383,147 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // 1. إنشاء النجوم الصغيرة
+        function createStars() {
+            const stars = document.getElementById('stars');
+            
+            for(let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // حجم صغير جداً
+                const size = Math.random() * 2 + 0.5;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                
+                // موقع عشوائي
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                
+                // ألوان متنوعة
+                const colors = ['#ffffff', '#eef5ff', '#d4e4ff', '#aaccff'];
+                star.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // وميض عشوائي
+                const delay = Math.random() * 10;
+                const duration = Math.random() * 4 + 2;
+                star.style.animationDelay = delay + 's';
+                star.style.animationDuration = duration + 's';
+                
+                stars.appendChild(star);
+            }
+        }
+        
+        // 2. إنشاء مذنب واحد
+        function createMeteor(type = 'normal') {
+            const meteors = document.getElementById('meteors');
+            const meteor = document.createElement('div');
+            
+            // اختيار نوع المذنب
+            if (type === 'large') {
+                meteor.className = 'meteor-large';
+            } else if (type === 'white') {
+                meteor.className = 'meteor-white';
+            } else {
+                meteor.className = 'meteor';
+            }
+            
+            // موقع عشوائي
+            meteor.style.left = Math.random() * 100 + '%';
+            meteor.style.top = Math.random() * 50 + '%';
+            
+            // سرعة عشوائية
+            let duration;
+            if (type === 'large') {
+                duration = Math.random() * 3 + 1.5; // سريع
+            } else if (type === 'white') {
+                duration = Math.random() * 5 + 3; // متوسط
+            } else {
+                duration = Math.random() * 4 + 2; // عادي
+            }
+            
+            meteor.style.animationDuration = duration + 's';
+            meteor.style.animationDelay = Math.random() * 2 + 's';
+            
+            // طول عشوائي
+            if (type === 'large') {
+                meteor.style.height = (Math.random() * 60 + 60) + 'px';
+            } else if (type === 'white') {
+                meteor.style.height = (Math.random() * 30 + 30) + 'px';
+            } else {
+                meteor.style.height = (Math.random() * 40 + 30) + 'px';
+            }
+            
+            meteors.appendChild(meteor);
+            
+            // إزالة المذنب بعد انتهاء الحركة
+            setTimeout(() => {
+                if (meteor.parentNode) {
+                    meteor.remove();
+                }
+            }, duration * 1000 + 1000);
+        }
+        
+        // 3. إنشاء الكثير من المذنبات
+        function createManyMeteors() {
+            // إنشاء 15 مذنباً بشكل فوري
+            for(let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    // توزيع الأنواع: 50% عادي, 30% كبير, 20% أبيض
+                    const rand = Math.random();
+                    if (rand < 0.5) {
+                        createMeteor('normal');
+                    } else if (rand < 0.8) {
+                        createMeteor('large');
+                    } else {
+                        createMeteor('white');
+                    }
+                }, i * 300); // تأخير بين كل مذنب
+            }
+        }
+        
+        // 4. استمرار إضافة المذنبات
+        function startMeteorShower() {
+            // إنشاء دفعة أولية
+            createManyMeteors();
+            
+            // استمرار إضافة مذنبات كل 3-5 ثواني
+            setInterval(() => {
+                // إضافة 3-6 مذنبات كل مرة
+                const count = Math.floor(Math.random() * 4) + 3;
+                for(let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const types = ['normal', 'normal', 'large', 'white'];
+                        const type = types[Math.floor(Math.random() * types.length)];
+                        createMeteor(type);
+                    }, i * 200);
+                }
+            }, 3000);
+        }
+        
+        // 5. البدء بكل شيء
+        window.onload = function() {
+            createStars();
+            startMeteorShower();
+            
+            // إضافة نجوم جديدة بين الحين والآخر
+            setInterval(() => {
+                if(Math.random() > 0.5) {
+                    const stars = document.getElementById('stars');
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.width = (Math.random() * 1.5 + 0.5) + 'px';
+                    star.style.height = star.style.width;
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = '-10px';
+                    star.style.background = Math.random() > 0.3 ? '#ffffff' : '#aaccff';
+                    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    stars.appendChild(star);
+                }
+            }, 2000);
+        };
+    </script>
 </body>
 </html>
