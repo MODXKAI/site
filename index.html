@@ -22,6 +22,45 @@
             overflow-x: hidden;
         }
         
+        /* زر تبديل اللغة */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .lang-btn:active {
+            transform: translateY(0);
+        }
+        
+        .lang-icon {
+            font-size: 1.1rem;
+        }
+        
         /* الخلفية السماوية السوداء */
         .space {
             position: fixed;
@@ -88,7 +127,7 @@
         
         /* مذنبات بيضاء */
         .meteor-white {
-            position: absolute;
+            position: fixed;
             width: 1px;
             height: 40px;
             background: linear-gradient(to bottom, transparent, #ffffff);
@@ -293,6 +332,16 @@
             left: 100%;
         }
         
+        /* نص إضافي في أسفل الصفحة */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #aaccff;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: repeat(2, 1fr);
@@ -305,6 +354,11 @@
             
             .image-container {
                 height: 200px;
+            }
+            
+            .language-switcher {
+                top: 15px;
+                left: 15px;
             }
         }
         
@@ -320,10 +374,23 @@
             .header h1 {
                 font-size: 2rem;
             }
+            
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- زر تبديل اللغة -->
+    <div class="language-switcher">
+        <button class="lang-btn" id="langToggle">
+            <span class="lang-icon">🌐</span>
+            <span id="langText">English</span>
+        </button>
+    </div>
+    
     <!-- الفضاء الأسود -->
     <div class="space"></div>
     
@@ -335,7 +402,7 @@
     
     <!-- المحتوى الرئيسي -->
     <div class="header">
-        <h1>معرض الصور السماوي</h1>
+        <h1 id="mainTitle">معرض الصور السماوي</h1>
     </div>
     
     <div class="container">
@@ -345,8 +412,8 @@
                 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي">
             </div>
             <div class="content">
-                <h3 class="image-title">منظر طبيعي</h3>
-                <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title1">منظر طبيعي</h3>
+                <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn" id="btn1">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -356,8 +423,8 @@
                 <img src="https://images.unsplash.com/photo-1518834103329-356dd8f3281c" alt="حيوان أسد">
             </div>
             <div class="content">
-                <h3 class="image-title">أسد في البرية</h3>
-                <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title2">أسد في البرية</h3>
+                <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn" id="btn2">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -367,8 +434,8 @@
                 <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="طعام صحي">
             </div>
             <div class="content">
-                <h3 class="image-title">طعام صحي</h3>
-                <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title3">طعام صحي</h3>
+                <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn" id="btn3">فتح رابط الصورة</a>
             </div>
         </div>
         
@@ -378,13 +445,93 @@
                 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية">
             </div>
             <div class="content">
-                <h3 class="image-title">تقنية حديثة</h3>
-                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn">فتح رابط الصورة</a>
+                <h3 class="image-title" id="title4">تقنية حديثة</h3>
+                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn" id="btn4">فتح رابط الصورة</a>
             </div>
         </div>
     </div>
+    
+    <div class="footer" id="footerText">
+        جميع الصور من موقع Unsplash
+    </div>
 
     <script>
+        // بيانات اللغات
+        const translations = {
+            ar: {
+                langText: "English",
+                mainTitle: "معرض الصور السماوي",
+                title1: "منظر طبيعي",
+                title2: "أسد في البرية",
+                title3: "طعام صحي",
+                title4: "تقنية حديثة",
+                btn1: "فتح رابط الصورة",
+                btn2: "فتح رابط الصورة",
+                btn3: "فتح رابط الصورة",
+                btn4: "فتح رابط الصورة",
+                footerText: "جميع الصور من موقع Unsplash"
+            },
+            en: {
+                langText: "العربية",
+                mainTitle: "Celestial Photo Gallery",
+                title1: "Natural Landscape",
+                title2: "Lion in the Wild",
+                title3: "Healthy Food",
+                title4: "Modern Technology",
+                btn1: "Open Image Link",
+                btn2: "Open Image Link",
+                btn3: "Open Image Link",
+                btn4: "Open Image Link",
+                footerText: "All images from Unsplash"
+            }
+        };
+        
+        // الحالة الحالية للغة
+        let currentLang = 'ar';
+        
+        // دالة تبديل اللغة
+        function toggleLanguage() {
+            // تبديل اللغة
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            
+            // تحديث جميع النصوص
+            updateTexts();
+            
+            // إضافة تأثير سلس للتبديل
+            document.body.style.opacity = 0.7;
+            setTimeout(() => {
+                document.body.style.opacity = 1;
+            }, 150);
+        }
+        
+        // دالة تحديث النصوص
+        function updateTexts() {
+            const langData = translations[currentLang];
+            
+            // تحديث جميع العناصر
+            document.getElementById('langText').textContent = langData.langText;
+            document.getElementById('mainTitle').textContent = langData.mainTitle;
+            document.getElementById('title1').textContent = langData.title1;
+            document.getElementById('title2').textContent = langData.title2;
+            document.getElementById('title3').textContent = langData.title3;
+            document.getElementById('title4').textContent = langData.title4;
+            document.getElementById('btn1').textContent = langData.btn1;
+            document.getElementById('btn2').textContent = langData.btn2;
+            document.getElementById('btn3').textContent = langData.btn3;
+            document.getElementById('btn4').textContent = langData.btn4;
+            document.getElementById('footerText').textContent = langData.footerText;
+            
+            // تحديث العنوان في تبويب المتصفح
+            document.title = langData.mainTitle;
+        }
+        
+        // إضافة حدث النقر على زر اللغة
+        document.getElementById('langToggle').addEventListener('click', toggleLanguage);
+        
         // 1. إنشاء النجوم الصغيرة
         function createStars() {
             const stars = document.getElementById('stars');
