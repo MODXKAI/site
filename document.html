@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 1: Start System</title>
+  <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: 'Arial', sans-serif;
+                background: linear-gradient(135deg, #3498db, #2c3e50);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                color: white;
+            }
+            
+            /* Success Dialog */
+            .success-dialog {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.9);
+                background: rgba(39, 174, 96, 0.95);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 30px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                border: 2px solid rgba(255,255,255,0.2);
+                z-index: 10000;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                max-width: 300px;
+                width: 90%;
+            }
+            
+            .success-dialog.show {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            
+            .success-icon {
+                font-size: 50px;
+                margin-bottom: 15px;
+            }
+            
+            .success-title {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            
+            .success-message {
+                font-size: 14px;
+                opacity: 0.9;
+                margin-bottom: 20px;
+            }
+            
+            .success-btn {
+                background: white;
+                color: #27ae60;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 25px;
+                font-size: 14px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s;
+                width: 100%;
+            }
+            
+            .success-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            
+            /* Overlay */
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                backdrop-filter: blur(5px);
+                z-index: 9999;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .overlay.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            /* Social Bar Frame - Top */
+            .social-bar-frame {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 40px;
+                background: rgba(255, 255, 255, 0.05);
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* Page Wrapper */
+            .page-wrapper {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* Main Content */
+            .main-content {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 60px 15px 30px;
+            }
+            
+            .container {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 16px;
+                padding: 30px 20px;
+                max-width: 500px;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.15);
+                margin-bottom: 20px;
+            }
+            
+            .header {
+                margin-bottom: 25px;
+            }
+            
+            .icon {
+                font-size: 45px;
+                margin-bottom: 12px;
+            }
+            
+            .title {
+                font-size: 22px;
+                margin-bottom: 8px;
+                font-weight: bold;
+            }
+            
+            .subtitle {
+                font-size: 13px;
+                opacity: 0.9;
+                margin-bottom: 15px;
+            }
+            
+            .progress-container {
+                margin: 20px 0;
+            }
+            
+            .progress-bar {
+                height: 6px;
+                background: rgba(255,255,255,0.2);
+                border-radius: 3px;
+                overflow: hidden;
+            }
+            
+            .progress-fill {
+                height: 100%;
+                background: white;
+                border-radius: 3px;
+                transition: width 0.5s ease;
+                width: 25.0%;
+            }
+            
+            .steps {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 8px;
+                font-size: 11px;
+            }
+            
+            .step {
+                opacity: 0.6;
+            }
+            
+            .step.active {
+                opacity: 1;
+                font-weight: bold;
+            }
+            
+            .content {
+                margin: 20px 0;
+                line-height: 1.5;
+            }
+            
+            .content h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            
+            /* Next Button */
+            .next-btn {
+                background: white;
+                color: #3498db;
+                border: none;
+                padding: 16px 25px;
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                margin: 15px 0;
+                width: 100%;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            
+            .next-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            }
+            
+            /* Ad Button */
+            .ad-btn {
+                background: linear-gradient(135deg, #e74c3c, #c0392b);
+                color: white;
+                border: none;
+                padding: 16px 25px;
+                border-radius: 50px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                margin: 15px 0;
+                width: 100%;
+                transition: all 0.3s;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+            
+            .ad-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+                background: linear-gradient(135deg, #c0392b, #a93226);
+            }
+            
+            .code-box {
+                background: rgba(0,0,0,0.3);
+                padding: 18px;
+                border-radius: 10px;
+                margin: 18px 0;
+                border: 2px solid rgba(255,255,255,0.2);
+            }
+            
+            .code-text {
+                font-family: 'Courier New', monospace;
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 12px;
+                letter-spacing: 1.5px;
+            }
+            
+            .copy-btn {
+                background: #27ae60;
+                color: white;
+                border: none;
+                padding: 14px 20px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: bold;
+                width: 100%;
+                transition: all 0.3s;
+            }
+            
+            .copy-btn:hover {
+                background: #219a52;
+            }
+            
+            .ad-notice-small {
+                background: rgba(241, 196, 15, 0.3);
+                padding: 6px;
+                border-radius: 4px;
+                margin: 8px 0;
+                font-size: 10px;
+                border: 1px solid rgba(241, 196, 15, 0.5);
+                text-align: center;
+            }
+            
+            .time-info {
+                background: rgba(52, 152, 219, 0.3);
+                padding: 14px;
+                border-radius: 8px;
+                margin: 14px 0;
+                border: 1px solid #3498db;
+            }
+            
+            .time-item {
+                display: flex;
+                justify-content: space-between;
+                margin: 7px 0;
+                font-size: 13px;
+            }
+            
+            .time-item span {
+                color: #bdc3c7;
+            }
+            
+            .time-item strong {
+                color: #3498db;
+            }
+            
+            .features {
+                text-align: left;
+                background: rgba(255,255,255,0.1);
+                padding: 14px;
+                border-radius: 8px;
+                margin: 18px 0;
+            }
+            
+            .feature {
+                margin: 6px 0;
+                font-size: 13px;
+                padding-left: 8px;
+                border-left: 2px solid #3498db;
+            }
+            
+            .ad-notice {
+                background: rgba(241, 196, 15, 0.2);
+                padding: 8px;
+                border-radius: 6px;
+                margin: 12px 0;
+                font-size: 11px;
+                border: 1px solid rgba(241, 196, 15, 0.4);
+                text-align: center;
+            }
+            
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .main-content {
+                    padding: 60px 12px 25px;
+                }
+                
+                .container {
+                    padding: 25px 18px;
+                    max-width: 95%;
+                }
+                
+                .success-dialog {
+                    padding: 25px;
+                    max-width: 280px;
+                }
+                
+                .success-icon {
+                    font-size: 45px;
+                }
+                
+                .success-title {
+                    font-size: 18px;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .social-bar-frame {
+                    height: 35px;
+                }
+                
+                .main-content {
+                    padding: 55px 10px 20px;
+                }
+                
+                .container {
+                    padding: 20px 15px;
+                }
+                
+                .success-dialog {
+                    padding: 20px;
+                    max-width: 250px;
+                }
+                
+                .success-icon {
+                    font-size: 40px;
+                }
+                
+                .success-title {
+                    font-size: 16px;
+                }
+                
+                .success-message {
+                    font-size: 13px;
+                }
+            }
+        </style>
+ </head>
+ <body>
+  <!-- Success Dialog -->
+  <div class="overlay" id="overlay"></div>
+  <div class="success-dialog" id="successDialog">
+   <div class="success-icon">✅</div>
+   <div class="success-title">Success!</div>
+   <div class="success-message">Code copied to clipboard successfully</div>
+   <button class="success-btn" onclick="closeSuccessDialog()">OK</button>
+  </div>
+  <!-- Social Bar - Top -->
+  <!-- Social Bar - Top -->
+  <div class="ad-frame social-bar-frame">
+   <script type="text/javascript" src="//pl28051337.effectivegatecpm.com/1b/97/b0/1b97b0205bfcc7b78563f2cbb6694dad.js"></script>
+  </div>
+  <div class="page-wrapper">
+   <!-- Main Content -->
+   <div class="main-content">
+    <div class="container">
+     <div class="header">
+      <div class="icon">🚀</div>
+      <h1 class="title">Step 1: Start System</h1>
+      <p class="subtitle">Secure &amp; Exclusive System</p>
+     </div>
+     <div class="progress-container">
+      <div class="steps">
+       <span class="step active">1</span> <span class="step ">2</span> <span class="step ">3</span> <span class="step ">4</span>
+      </div>
+      <div class="progress-bar">
+       <div class="progress-fill"></div>
+      </div>
+     </div>
+     <div class="content">
+      <h2>Welcome! Start Your Journey Now</h2>
+      <p>Click "Next" to start your journey and get your exclusive code</p>
+      <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">Advanced global system - Exclusive code valid 39 minutes</p>
+     </div>
+     <div class="features">
+      <div class="feature">✅ Advanced Global System</div>
+      <div class="feature">⚡ Code valid 39 minutes</div>
+      <div class="feature">🔒 Secure &amp; encrypted</div>
+      <div class="feature">💰 Integrated earning system</div>
+     </div>
+     <div class="ad-notice">📢 Ads work automatically to support the system</div>
+     <div class="button-container">
+      <button class="next-btn" onclick="goToNext('/power/loading')">👉 Next</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+            // Function to go to next page
+            function goToNext(page) {
+                console.log('🎯 Going to next page');
+                setTimeout(() => {
+                    window.location.href = page;
+                }, 800);
+            }
+            
+            // Copy code with success dialog - بدون إعلان
+            function handleCopyCode(text, buttonElement) {
+                console.log('🎯 Copying code:', text);
+                
+                // First try the modern clipboard API
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        console.log('✅ Code copied successfully with modern API');
+                        showCopySuccess(buttonElement);
+                    }).catch(err => {
+                        console.error('❌ Modern clipboard failed:', err);
+                        fallbackCopyText(text, buttonElement);
+                    });
+                } else {
+                    // Fallback for older browsers
+                    fallbackCopyText(text, buttonElement);
+                }
+            }
+            
+            // Fallback copy method
+            function fallbackCopyText(text, buttonElement) {
+                console.log('🔄 Using fallback copy method');
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                textArea.style.top = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        console.log('✅ Code copied successfully with fallback');
+                        showCopySuccess(buttonElement);
+                    } else {
+                        console.error('❌ Fallback copy failed');
+                        alert('Failed to copy code. Please copy manually: ' + text);
+                    }
+                } catch (err) {
+                    console.error('❌ Fallback copy error:', err);
+                    alert('Failed to copy code. Please copy manually: ' + text);
+                }
+                
+                document.body.removeChild(textArea);
+            }
+            
+            // Show copy success
+            function showCopySuccess(buttonElement) {
+                // Show success dialog
+                showSuccessDialog();
+                
+                // Change button text and style temporarily
+                const originalText = buttonElement.innerHTML;
+                const originalBackground = buttonElement.style.background;
+                
+                buttonElement.innerHTML = '✅ Copied!';
+                buttonElement.style.background = '#2ecc71';
+                buttonElement.disabled = true;
+                
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalText;
+                    buttonElement.style.background = originalBackground;
+                    buttonElement.disabled = false;
+                }, 2000);
+            }
+            
+            // Show success dialog
+            function showSuccessDialog() {
+                const dialog = document.getElementById('successDialog');
+                const overlay = document.getElementById('overlay');
+                dialog.classList.add('show');
+                overlay.classList.add('show');
+                
+                // Auto close after 3 seconds
+                setTimeout(() => {
+                    closeSuccessDialog();
+                }, 3000);
+            }
+            
+            // Close success dialog
+            function closeSuccessDialog() {
+                const dialog = document.getElementById('successDialog');
+                const overlay = document.getElementById('overlay');
+                dialog.classList.remove('show');
+                overlay.classList.remove('show');
+            }
+            
+            // Close dialog when clicking overlay
+            document.getElementById('overlay').addEventListener('click', closeSuccessDialog);
+            
+            // Close dialog with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeSuccessDialog();
+                }
+            });
+            
+            // Confirm page loading
+            window.addEventListener('load', function() {
+                console.log('✅ Page loaded - Step 1');
+            });
+        </script>
+  <!-- Additional ads -->
+  <script type="text/javascript" src="//pl28051480.effectivegatecpm.com/d3/62/b8/d362b8a2cdde5225b4188f60082edb5f.js"></script>
+  <script type="text/javascript">
+        atOptions = {
+            'key' : '4997e1ab0eebf6b96b88f1b7136a3539',
+            'format' : 'iframe',
+            'height' : 60,
+            'width' : 468,
+            'params' : {}
+        };
+        document.write('<scr' + 'ipt type="text/javascript" src="//www.effectivegatecpm.com/4997e1ab0eebf6b96b88f1b7136a3539/invoke.js"></scr' + 'ipt>');
+    </script>
+  <script>
+        // Ad button functions
+        function openAdButton() {
+            console.log('🎯 Opening ad from button');
+            window.open('https://www.effectivegatecpm.com/y3hajcpq?key=4997e1ab0eebf6b96b88f1b7136a3539', '_blank');
+            return true;
+        }
+        
+        // Start when page loads
+        window.addEventListener('load', function() {
+            console.log('✅ Page loaded with ads');
+        });
+    </script>
+ </body>
+</html>
