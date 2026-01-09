@@ -63,8 +63,13 @@
         .star:nth-child(8) { top: 80%; left: 50%; width: 3px; height: 3px; animation-delay: 0.8s; }
         .star:nth-child(9) { top: 90%; left: 10%; width: 2px; height: 2px; animation-delay: 1.3s; }
         .star:nth-child(10) { top: 15%; left: 90%; width: 3px; height: 3px; animation-delay: 1.8s; }
+        .star:nth-child(11) { top: 25%; left: 25%; width: 2px; height: 2px; animation-delay: 0.2s; }
+        .star:nth-child(12) { top: 35%; left: 75%; width: 1px; height: 1px; animation-delay: 0.7s; }
+        .star:nth-child(13) { top: 45%; left: 45%; width: 3px; height: 3px; animation-delay: 1.2s; }
+        .star:nth-child(14) { top: 55%; left: 85%; width: 2px; height: 2px; animation-delay: 1.7s; }
+        .star:nth-child(15) { top: 65%; left: 35%; width: 1px; height: 1px; animation-delay: 2.2s; }
         
-        /* المذنبات الحقيقية - تأتي من الأعلى بزوايا مختلفة */
+        /* المذنبات الحقيقية */
         .comets-container {
             position: absolute;
             top: 0;
@@ -77,81 +82,81 @@
         .comet {
             position: absolute;
             opacity: 0;
+            display: flex;
+            align-items: center;
         }
         
-        /* رأس المذنب */
+        /* رأس المذنب (كرة متوهجة) */
         .comet-head {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(255, 255, 200, 0.9) 30%, 
+                rgba(200, 230, 255, 0.6) 60%, 
+                transparent 100%);
             border-radius: 50%;
-            box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.8);
+            box-shadow: 
+                0 0 20px 5px rgba(255, 255, 200, 0.8),
+                0 0 40px 10px rgba(200, 230, 255, 0.5);
+            z-index: 2;
         }
         
-        /* ذيل المذنب */
-        .comet-tail {
-            position: absolute;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
-            border-radius: 2px;
-            transform-origin: left center;
+        /* ذيل المذنب (سلسلة من النقاط المتوهجة) */
+        .comet-trail {
+            display: flex;
+            gap: 8px;
+            margin-right: 8px;
+            direction: rtl;
         }
         
-        /* مذنبات مختلفة بزوايا مختلفة */
+        .trail-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 8px 2px rgba(255, 255, 200, 0.6);
+            animation: trail-pulse 1.5s infinite;
+        }
+        
+        /* توقيتات مختلفة للنقاط في الذيل */
+        .trail-dot:nth-child(1) { animation-delay: 0.1s; }
+        .trail-dot:nth-child(2) { animation-delay: 0.2s; opacity: 0.8; }
+        .trail-dot:nth-child(3) { animation-delay: 0.3s; opacity: 0.6; }
+        .trail-dot:nth-child(4) { animation-delay: 0.4s; opacity: 0.4; }
+        .trail-dot:nth-child(5) { animation-delay: 0.5s; opacity: 0.2; }
+        
+        /* مذنبات مختلفة باتجاهات واضحة */
         .comet-1 {
             top: -50px;
-            left: 10%;
-            animation: comet-fly 8s infinite 0s linear;
-        }
-        
-        .comet-1 .comet-tail {
-            width: 100px;
-            transform: rotate(-30deg);
+            left: 15%;
+            animation: comet-fly-right 8s infinite 0s linear;
         }
         
         .comet-2 {
             top: -80px;
             left: 40%;
-            animation: comet-fly 10s infinite 3s linear;
-        }
-        
-        .comet-2 .comet-tail {
-            width: 120px;
-            transform: rotate(-45deg);
+            animation: comet-fly-right 10s infinite 4s linear;
         }
         
         .comet-3 {
             top: -60px;
-            left: 70%;
-            animation: comet-fly 7s infinite 6s linear;
-        }
-        
-        .comet-3 .comet-tail {
-            width: 80px;
-            transform: rotate(-20deg);
+            right: 20%;
+            animation: comet-fly-left 9s infinite 2s linear;
+            flex-direction: row-reverse;
         }
         
         .comet-4 {
             top: -100px;
-            left: 20%;
-            animation: comet-fly 9s infinite 9s linear;
-        }
-        
-        .comet-4 .comet-tail {
-            width: 140px;
-            transform: rotate(-60deg);
+            right: 45%;
+            animation: comet-fly-left 11s infinite 6s linear;
+            flex-direction: row-reverse;
         }
         
         .comet-5 {
             top: -70px;
-            left: 85%;
-            animation: comet-fly 11s infinite 12s linear;
-        }
-        
-        .comet-5 .comet-tail {
-            width: 90px;
-            transform: rotate(-15deg);
+            left: 70%;
+            animation: comet-fly-right 7s infinite 8s linear;
         }
         
         /* سحب خفيفة */
@@ -352,10 +357,15 @@
             50% { opacity: 1; }
         }
         
-        @keyframes comet-fly {
+        @keyframes trail-pulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes comet-fly-right {
             0% {
                 opacity: 0;
-                transform: translateY(0) translateX(0);
+                transform: translateX(-100px) translateY(0);
             }
             10% {
                 opacity: 1;
@@ -365,7 +375,24 @@
             }
             100% {
                 opacity: 0;
-                transform: translateY(100vh) translateX(100px);
+                transform: translateX(100vw) translateY(100vh);
+            }
+        }
+        
+        @keyframes comet-fly-left {
+            0% {
+                opacity: 0;
+                transform: translateX(100px) translateY(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-100vw) translateY(100vh);
             }
         }
         
@@ -383,18 +410,19 @@
                 height: 200px;
             }
             
-            /* جعل المذنبات أصغر على الجوال */
+            /* تعديل المذنبات للجوال */
             .comet-head {
-                width: 6px;
-                height: 6px;
+                width: 12px;
+                height: 12px;
             }
             
-            .comet-1 .comet-tail,
-            .comet-2 .comet-tail,
-            .comet-3 .comet-tail,
-            .comet-4 .comet-tail,
-            .comet-5 .comet-tail {
-                width: 60px;
+            .trail-dot {
+                width: 5px;
+                height: 5px;
+            }
+            
+            .comet-trail {
+                gap: 6px;
             }
         }
         
@@ -409,6 +437,11 @@
             
             .header h1 {
                 font-size: 2rem;
+            }
+            
+            /* إخفاء بعض المذنبات على الشاشات الصغيرة */
+            .comet-4, .comet-5 {
+                display: none;
             }
         }
     </style>
@@ -428,6 +461,11 @@
             <div class="star"></div>
             <div class="star"></div>
             <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
         </div>
         
         <div class="clouds">
@@ -437,25 +475,61 @@
         
         <!-- المذنبات الحقيقية -->
         <div class="comets-container">
+            <!-- مذنبات تتحرك من اليسار إلى اليمين -->
             <div class="comet comet-1">
                 <div class="comet-head"></div>
-                <div class="comet-tail"></div>
+                <div class="comet-trail">
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                </div>
             </div>
+            
             <div class="comet comet-2">
                 <div class="comet-head"></div>
-                <div class="comet-tail"></div>
+                <div class="comet-trail">
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                </div>
             </div>
+            
+            <!-- مذنبات تتحرك من اليمين إلى اليسار -->
             <div class="comet comet-3">
                 <div class="comet-head"></div>
-                <div class="comet-tail"></div>
+                <div class="comet-trail">
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                </div>
             </div>
+            
             <div class="comet comet-4">
                 <div class="comet-head"></div>
-                <div class="comet-tail"></div>
+                <div class="comet-trail">
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                </div>
             </div>
+            
             <div class="comet comet-5">
                 <div class="comet-head"></div>
-                <div class="comet-tail"></div>
+                <div class="comet-trail">
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                    <div class="trail-dot"></div>
+                </div>
             </div>
         </div>
     </div>
