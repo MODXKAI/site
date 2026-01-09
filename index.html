@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع معرض الصور البسيط</title>
+    <title>معرض الصور البسيط</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
             background-color: #f8f9fa;
             color: #333;
             padding: 20px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
@@ -33,9 +33,9 @@
         }
         
         .container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
         
         .image-card {
@@ -44,6 +44,8 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
         .image-card:hover {
@@ -52,7 +54,7 @@
         
         .image-container {
             width: 100%;
-            height: 300px;
+            height: 200px;
             overflow: hidden;
         }
         
@@ -64,46 +66,44 @@
         
         .content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         
         .image-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
             color: #2c3e50;
-        }
-        
-        .image-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            text-align: center;
         }
         
         .link-btn {
             display: inline-block;
             background-color: #3498db;
             color: white;
-            padding: 10px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 500;
             transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: auto;
         }
         
         .link-btn:hover {
             background-color: #2980b9;
         }
         
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             .container {
-                display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
             }
         }
         
-        @media (min-width: 1024px) {
+        @media (max-width: 480px) {
             .container {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -111,7 +111,7 @@
 <body>
     <div class="header">
         <h1>معرض الصور</h1>
-        <p>كل صورة مع نص تعريف وزر لفتح الرابط</p>
+        <p>4 صور مع عناوين فقط وأزرار لفتح الروابط</p>
     </div>
     
     <div class="container">
@@ -121,8 +121,7 @@
                 <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي">
             </div>
             <div class="content">
-                <h3 class="image-title">منظر طبيعي خلاب</h3>
-                <p class="image-description">منظر طبيعي يظهر جمال الطبيعة في فصل الربيع مع تفتح الأزوان والأشجار الخضراء.</p>
+                <h3 class="image-title">منظر طبيعي</h3>
                 <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
@@ -134,7 +133,6 @@
             </div>
             <div class="content">
                 <h3 class="image-title">أسد في البرية</h3>
-                <p class="image-description">صورة لأسد يظهر قوته وجماله في موطنه الطبيعي في إفريقيا.</p>
                 <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
@@ -145,8 +143,7 @@
                 <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="طعام صحي">
             </div>
             <div class="content">
-                <h3 class="image-title">طبق صحي شهي</h3>
-                <p class="image-description">طبق صحي يحتوي على خضروات طازجة ومكونات مغذية للجسم.</p>
+                <h3 class="image-title">طعام صحي</h3>
                 <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
@@ -154,35 +151,10 @@
         <!-- الصورة الرابعة -->
         <div class="image-card">
             <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e" alt="عمارة حديثة">
-            </div>
-            <div class="content">
-                <h3 class="image-title">تصميم معماري مذهل</h3>
-                <p class="image-description">تصميم معماري حديث يظهر دقة التفاصيل والإبداع في البناء.</p>
-                <a href="https://unsplash.com/photos/tZCrFpSNiIQ" target="_blank" class="link-btn">فتح رابط الصورة</a>
-            </div>
-        </div>
-        
-        <!-- الصورة الخامسة -->
-        <div class="image-card">
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="الفضاء">
-            </div>
-            <div class="content">
-                <h3 class="image-title">جمال الكون والنجوم</h3>
-                <p class="image-description">صورة مذهلة للفضاء والنجوم التي تظهر عجائب الكون الواسع.</p>
-                <a href="https://unsplash.com/photos/_SFJhRPzJHs" target="_blank" class="link-btn">فتح رابط الصورة</a>
-            </div>
-        </div>
-        
-        <!-- الصورة السادسة -->
-        <div class="image-card">
-            <div class="image-container">
                 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية">
             </div>
             <div class="content">
                 <h3 class="image-title">تقنية حديثة</h3>
-                <p class="image-description">أحدث الأجهزة التقنية التي تجعل حياتنا أكثر سهولة وإنتاجية.</p>
                 <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
