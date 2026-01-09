@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع معرض الصور - تطبيق Gaj</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>موقع معرض الصور البسيط</title>
     <style>
         * {
             margin: 0;
@@ -14,9 +13,8 @@
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f8f9fa;
             color: #333;
-            line-height: 1.6;
             padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -26,256 +24,168 @@
             text-align: center;
             margin-bottom: 40px;
             padding: 20px;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            border-radius: 15px;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
             margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
         }
         
         .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 30px;
-            margin-bottom: 40px;
         }
         
-        .card {
+        .image-card {
             background-color: white;
-            border-radius: 15px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
         }
         
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        .image-card:hover {
+            transform: translateY(-5px);
         }
         
-        .card-image {
+        .image-container {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
+            height: 300px;
+            overflow: hidden;
         }
         
-        .card-content {
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .content {
             padding: 20px;
         }
         
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .image-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             color: #2c3e50;
         }
         
-        .card-description {
+        .image-description {
             color: #666;
-            font-size: 1rem;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
         
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(to right, #2575fc, #6a11cb);
+        .link-btn {
+            display: inline-block;
+            background-color: #3498db;
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 10px 25px;
+            border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
         }
         
-        .download-btn:hover {
-            background: linear-gradient(to right, #1c67e3, #5a0ac5);
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+        .link-btn:hover {
+            background-color: #2980b9;
         }
         
-        .download-btn i {
-            margin-left: 8px;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            color: #666;
-            border-top: 1px solid #ddd;
-        }
-        
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
             .container {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                gap: 20px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
         }
         
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
+        @media (min-width: 1024px) {
             .container {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1><i class="fas fa-images"></i> معرض الصور التفاعلي</h1>
-        <p>تصميم مشابه لتطبيق Gaj مع إمكانية تحميل الصور أو فتح الروابط</p>
+        <h1>معرض الصور</h1>
+        <p>كل صورة مع نص تعريف وزر لفتح الرابط</p>
     </div>
     
     <div class="container">
         <!-- الصورة الأولى -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">المناظر الطبيعية الخلابة</h3>
-                <p class="card-description">مناظر طبيعية ساحرة من جميع أنحاء العالم، تظهر جمال الطبيعة في أبها صورها. هذه الصورة تلتقط لحظة غروب الشمس على الجبال.</p>
-                <a href="#" class="download-btn" id="download1">
-                    <i class="fas fa-download"></i> تحميل الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="منظر طبيعي">
+            </div>
+            <div class="content">
+                <h3 class="image-title">منظر طبيعي خلاب</h3>
+                <p class="image-description">منظر طبيعي يظهر جمال الطبيعة في فصل الربيع مع تفتح الأزوان والأشجار الخضراء.</p>
+                <a href="https://unsplash.com/photos/3GZi6OpSDcY" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
         
         <!-- الصورة الثانية -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="الفضاء والنجوم" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">عجائب الفضاء والنجوم</h3>
-                <p class="card-description">اكتشف عجائب الكون من خلال هذه الصورة المذهلة للنجوم والمجرات. يمكن استخدام هذه الصورة كخلفية لشاشة الهاتف أو الكمبيوتر.</p>
-                <a href="https://unsplash.com/photos/_SFJhRPzJHs" target="_blank" class="download-btn" id="openLink1">
-                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1518834103329-356dd8f3281c" alt="حيوان أسد">
+            </div>
+            <div class="content">
+                <h3 class="image-title">أسد في البرية</h3>
+                <p class="image-description">صورة لأسد يظهر قوته وجماله في موطنه الطبيعي في إفريقيا.</p>
+                <a href="https://unsplash.com/photos/O4tymF6C0yQ" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
         
         <!-- الصورة الثالثة -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1518834103329-356dd8f3281c" alt="حيوانات برية" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">الحيوانات البرية</h3>
-                <p class="card-description">صورة مذهلة لحيوان الأسد في موطنه الطبيعي. تعكس هذه الصورة قوة وجمال الحياة البرية والتنوع الحيوي في كوكبنا.</p>
-                <a href="#" class="download-btn" id="download2">
-                    <i class="fas fa-download"></i> تحميل الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="طعام صحي">
+            </div>
+            <div class="content">
+                <h3 class="image-title">طبق صحي شهي</h3>
+                <p class="image-description">طبق صحي يحتوي على خضروات طازجة ومكونات مغذية للجسم.</p>
+                <a href="https://unsplash.com/photos/p6rNTdAPbuk" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
         
         <!-- الصورة الرابعة -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e" alt="العمارة الحديثة" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">عمارة حديثة مذهلة</h3>
-                <p class="card-description">تصميم معماري حديث يظهر الإبداع البشري في تشكيل المدن. هذه الصورة تظهر دقة التفاصيل في البناء المعماري الحديث.</p>
-                <a href="https://unsplash.com/photos/tZCrFpSNiIQ" target="_blank" class="download-btn" id="openLink2">
-                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e" alt="عمارة حديثة">
+            </div>
+            <div class="content">
+                <h3 class="image-title">تصميم معماري مذهل</h3>
+                <p class="image-description">تصميم معماري حديث يظهر دقة التفاصيل والإبداع في البناء.</p>
+                <a href="https://unsplash.com/photos/tZCrFpSNiIQ" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
         
         <!-- الصورة الخامسة -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="أطباق غذائية" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">أطباق غذائية شهية</h3>
-                <p class="card-description">أطباق صحية ولذيذة من مختلف المطابخ العالمية. هذه الصورة تعرض طبقًا صحيًا يمكن تحضيره في المنزل بسهولة.</p>
-                <a href="#" class="download-btn" id="download3">
-                    <i class="fas fa-download"></i> تحميل الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="الفضاء">
+            </div>
+            <div class="content">
+                <h3 class="image-title">جمال الكون والنجوم</h3>
+                <p class="image-description">صورة مذهلة للفضاء والنجوم التي تظهر عجائب الكون الواسع.</p>
+                <a href="https://unsplash.com/photos/_SFJhRPzJHs" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
         
         <!-- الصورة السادسة -->
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية حديثة" class="card-image">
-            <div class="card-content">
-                <h3 class="card-title">التقنية الحديثة</h3>
-                <p class="card-description">أحدث الأجهزة التقنية التي تجعل حياتنا أسهل وأكثر إنتاجية. هذه الصورة تظهر أحدث التطورات في عالم التكنولوجيا.</p>
-                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="download-btn" id="openLink3">
-                    <i class="fas fa-external-link-alt"></i> فتح رابط الصورة
-                </a>
+        <div class="image-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64" alt="تقنية">
+            </div>
+            <div class="content">
+                <h3 class="image-title">تقنية حديثة</h3>
+                <p class="image-description">أحدث الأجهزة التقنية التي تجعل حياتنا أكثر سهولة وإنتاجية.</p>
+                <a href="https://unsplash.com/photos/4-EeTnaC1S4" target="_blank" class="link-btn">فتح رابط الصورة</a>
             </div>
         </div>
     </div>
-    
-    <div class="footer">
-        <p>© 2023 معرض الصور التفاعلي | تصميم مشابه لتطبيق Gaj</p>
-        <p>جميع الصور من موقع <a href="https://unsplash.com" target="_blank">Unsplash</a></p>
-    </div>
-
-    <script>
-        // إضافة تفاعلية لأزرار التحميل
-        document.addEventListener('DOMContentLoaded', function() {
-            // أزرار التحميل
-            const downloadButtons = document.querySelectorAll('a[id^="download"]');
-            downloadButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // الحصول على عنوان الصورة من العنصر img داخل نفس البطاقة
-                    const card = this.closest('.card');
-                    const imgSrc = card.querySelector('img').src;
-                    const imgTitle = card.querySelector('.card-title').textContent;
-                    
-                    // محاكاة عملية التحميل
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
-                    this.style.backgroundColor = '#4CAF50';
-                    
-                    // إنشاء رابط تحميل مؤقت
-                    setTimeout(() => {
-                        const link = document.createElement('a');
-                        link.href = imgSrc;
-                        link.download = imgTitle.replace(/\s+/g, '_') + '.jpg';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        
-                        this.innerHTML = '<i class="fas fa-check"></i> تم التحميل!';
-                        
-                        // إعادة الزر إلى حالته الأصلية بعد ثانيتين
-                        setTimeout(() => {
-                            this.innerHTML = '<i class="fas fa-download"></i> تحميل الصورة';
-                            this.style.backgroundColor = '';
-                        }, 2000);
-                    }, 1500);
-                });
-            });
-            
-            // أزرار فتح الرابط (لا تحتاج إلى تعديل)
-            const linkButtons = document.querySelectorAll('a[id^="openLink"]');
-            linkButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // عرض رسالة تأكيد
-                    const card = this.closest('.card');
-                    const imgTitle = card.querySelector('.card-title').textContent;
-                    console.log(`فتح رابط لصورة: ${imgTitle}`);
-                });
-            });
-        });
-    </script>
 </body>
 </html>
